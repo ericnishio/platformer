@@ -38,6 +38,14 @@ export default function createGame(store) {
 }
 
 /**
+ * @param {number} tile
+ * @return {number}
+ */
+export function getTileCoordinate(tile) {
+  return TILE_SIZE * tile;
+}
+
+/**
  * @return {Function}
  */
 export function dispatch() {
@@ -56,12 +64,4 @@ export function getState() {
  */
 function getStore() {
   return _store;
-}
-
-/**
- * @param {number} tile
- * @return {number}
- */
-export function getTileCoordinate(tile) {
-  return TILE_SIZE * tile;
 }
