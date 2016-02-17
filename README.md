@@ -1,7 +1,7 @@
 Super Shipwreck
 ===============
 
-A survival sci-fi platformer.
+![screencap][screencap]
 
 ## Setup
 
@@ -19,3 +19,5 @@ npm start
 - [Bfxr](http://www.bfxr.net/) for sound effects (.bfxrsound)
 - [MediaHuman Audio Converter](http://www.mediahuman.com/audio-converter/) for converting audio files (.wav to .ogg/.mp3)
 - [Littera](http://kvazars.com/littera/) for converting fonts (.ttf to .fnt/.png)
+
+[screencap]: /screenshots/screencap1.gif
