@@ -61,7 +61,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Super Shipwreck',
+      title: 'platformer',
       template: './src/index.html',
       inject: 'body'
     })
