@@ -12,6 +12,8 @@ npm install
 npm start
 ```
 
+Dev URL: `http://localhost:8080`
+
 ## Tools
 
 - [PyxelEdit](http://pyxeledit.com/) for art (.pyxel)

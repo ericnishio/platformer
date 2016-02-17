@@ -9,6 +9,10 @@
   },
   "author": "Eric Nishio",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ericnishio/platformer.git"
+  },
   "dependencies": {
     "immutable": "3.7.6",
     "redux": "3.3.1"

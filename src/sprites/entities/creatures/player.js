@@ -29,7 +29,6 @@ export default class Player extends Creature {
     this.animations.add('jumpLeft', [8], animationFrameRate, false); // TODO: Replace animation.
     this.animations.add('jumpRight', [0], animationFrameRate, false); // TODO: Replace animation.
 
-    console.log(this.effects);
     this.effects.step = this.game.add.audio('step', 1, false);
     this.effects.burn = this.game.add.audio('combustion1', 1, false);
     this.effects.shoot = this.game.add.audio('laser1', 1, false);
