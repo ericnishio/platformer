@@ -1,5 +1,5 @@
-Super Shipwreck
-===============
+platformer
+==========
 
 ![screencap][screencap]
 

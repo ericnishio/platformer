@@ -1,8 +1,8 @@
 {
-  "name": "supershipwreck",
+  "name": "platformer",
   "version": "1.0.0",
-  "description": "A survival sci-fi platformer",
-  "main": "index.js",
+  "description": "A sci-fi platformer",
+  "main": "src/index.js",
   "scripts": {
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server --inline --hot --progress --colors",
     "lint": "node node_modules/eslint/bin/eslint src"
