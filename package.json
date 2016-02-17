@@ -1,0 +1,30 @@
+{
+  "name": "supershipwreck",
+  "version": "1.0.0",
+  "description": "A survival sci-fi platformer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server --inline --hot --progress --colors",
+    "lint": "node node_modules/eslint/bin/eslint src"
+  },
+  "author": "Eric Nishio",
+  "license": "ISC",
+  "dependencies": {
+    "immutable": "3.7.6",
+    "redux": "3.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "6.5.2",
+    "babel-eslint": "^5.0.0",
+    "babel-loader": "6.2.2",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-stage-2": "6.5.0",
+    "eslint": "^2.1.0",
+    "extract-text-webpack-plugin": "1.0.1",
+    "file-loader": "0.8.5",
+    "html-webpack-plugin": "2.8.2",
+    "imports-loader": "0.6.5",
+    "webpack": "1.12.13",
+    "webpack-dev-server": "1.14.1"
+  }
+}
