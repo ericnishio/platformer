@@ -6,10 +6,8 @@ export default class TwinklingStar extends Decoration {
    * @param {Game} game
    * @param {number} x
    * @param {number} y
-   * @param {string} spritesheet
-   * @param {number} tileIndex
    */
-  constructor(game, x, y, spritesheet, tileIndex) {
+  constructor(game, x, y) {
     super(game, x, y, 'terrain-1x1-1', 25);
 
     let twinkleFrameRates = [1.1, 1.3, 1.5, 1.7, 2, 2.2, 2.4];

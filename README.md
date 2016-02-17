@@ -8,11 +8,17 @@ platformer
 Requirements: *Node 5*
 
 ```
-npm install
-npm start
+$ npm install
+$ npm start
 ```
 
-Dev URL: `http://localhost:8080`
+URL: `http://localhost:8080`
+
+## Code linter
+
+```
+$ npm run lint
+```
 
 ## Tools
 

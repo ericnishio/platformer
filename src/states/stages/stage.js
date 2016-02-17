@@ -119,7 +119,7 @@ export default class Stage extends GameState {
     if (!this.isVictorious()) {
       this.victorious = true;
 
-      console.log(`You beat the level.`);
+      console.log('You beat the level.');
 
       this.game.time.events.add(Phaser.Timer.SECOND * 1.5, () => {
         this.game.state.start('StageClear', true, false);
@@ -140,7 +140,7 @@ export default class Stage extends GameState {
     this.game.physics.arcade.collide(this.getPlayer(), this.getHazard(), this.getPlayer().die, null, this.getPlayer());
 
     if (this.getPlayer().alive && !this.getPlayer().hasOxygen()) {
-      console.log(`You ran out of oxygen.`);
+      console.log('You ran out of oxygen.');
       this.getPlayer().die();
     }
 
@@ -156,7 +156,7 @@ export default class Stage extends GameState {
     this.game.physics.arcade.collide(this.getObstacles(), this.getPlayer());
     this.game.physics.arcade.collide(this.getObstacles(), this.getPlatforms());
 
-    this.game.physics.arcade.collide(this.getPlayer().getBullets(), this.getPlatforms(), (bullet, platforms) => {
+    this.game.physics.arcade.collide(this.getPlayer().getBullets(), this.getPlatforms(), (bullet) => {
       bullet.kill();
     });
 
