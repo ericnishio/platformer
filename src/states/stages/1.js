@@ -11,7 +11,7 @@ export default class Stage1 extends Stage {
   create() {
     super.create();
 
-    this.createStage('Level1', ['terrain-1x1-1']);
+    this.createStage('Stage1', ['terrain-1x1-1']);
     this.createPlayer(getTileCoordinate(3), getTileCoordinate(15));
 
     this.getItems().add(new OxygenTank(this.game, getTileCoordinate(42), getTileCoordinate(18)));

@@ -241,7 +241,7 @@ export default class Player extends Creature {
       this.effects.burn.play();
 
       this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
-        this.game.state.start('Level1', true, false);
+        this.game.state.start('Stage1', true, false);
       });
     }
   }

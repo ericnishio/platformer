@@ -15,7 +15,7 @@ export default class Preloader extends GameState {
       require('assets/fonts/bitmap/press-start-2p/press-start-2p.fnt')
     );
 
-    this.load.tilemap('Level1', require('assets/tilemaps/level1.json'), null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('Stage1', require('assets/tilemaps/stage1.json'), null, Phaser.Tilemap.TILED_JSON);
     this.load.spritesheet('terrain-1x1-1', require('assets/spritesheets/terrain-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     this.load.spritesheet('structures-2x2-1', require('assets/spritesheets/structures-2x2-1.png'), TILE_SIZE * 2, TILE_SIZE * 2);
     this.load.spritesheet('creatures-1x2-1', require('assets/spritesheets/creatures-1x2-1.png'), TILE_SIZE, TILE_SIZE * 2);
@@ -28,7 +28,7 @@ export default class Preloader extends GameState {
     this.load.audio('combustion1', require('assets/audio/effects/combustion1.ogg'));
     this.load.audio('explosion1', require('assets/audio/effects/explosion1.ogg'));
     this.load.audio('powerup1', require('assets/audio/effects/powerup1.ogg'));
-    this.load.audio('powerup2', require('assets/audio/effects/powerup2.ogg'));
+    this.load.audio('powe1`rup2', require('assets/audio/effects/powerup2.ogg'));
     this.load.audio('step', require('assets/audio/effects/step.ogg'));
     this.load.audio('turn-on1', require('assets/audio/effects/turn-on1.ogg'));
   }
@@ -49,9 +49,10 @@ export default class Preloader extends GameState {
 
     this.add.tween(text).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true);
 
-    const tween = this.add.tween(this.preloadBar).to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true);
-
-    tween.onComplete.add(this.startGame, this);
+    this.add
+      .tween(this.preloadBar)
+      .to({alpha: 0}, 1000, Phaser.Easing.Linear.None, true)
+      .onComplete.add(this.startGame, this);
   }
 
   startGame() {
