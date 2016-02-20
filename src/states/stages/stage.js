@@ -13,7 +13,7 @@ export default class Stage extends GameState {
   createStage(tilemap, tilesets) {
     this.level = this.game.add.tilemap(tilemap, TILE_SIZE, TILE_SIZE);
 
-    tilesets.forEach((tileset) => {
+    tilesets.forEach(tileset => {
       this.level.addTilesetImage(tileset);
     });
 

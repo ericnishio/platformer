@@ -20,6 +20,7 @@ export default class Preloader extends GameState {
     this.load.spritesheet('structures-2x2-1', require('assets/spritesheets/structures-2x2-1.png'), TILE_SIZE * 2, TILE_SIZE * 2);
     this.load.spritesheet('creatures-1x2-1', require('assets/spritesheets/creatures-1x2-1.png'), TILE_SIZE, TILE_SIZE * 2);
     this.load.spritesheet('items-1x1-1', require('assets/spritesheets/items-1x1-1.png'), TILE_SIZE, TILE_SIZE);
+    this.load.spritesheet('menus-1x1-1', require('assets/spritesheets/menus-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     this.load.spritesheet('weapons-1x1-1', require('assets/spritesheets/weapons-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     this.load.spritesheet('effects-1x1-1', require('assets/spritesheets/effects-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     this.load.spritesheet('oxygen-meter', require('assets/spritesheets/oxygen-meter.png'), TILE_SIZE * 7, TILE_SIZE);
@@ -28,7 +29,7 @@ export default class Preloader extends GameState {
     this.load.audio('combustion1', require('assets/audio/effects/combustion1.ogg'));
     this.load.audio('explosion1', require('assets/audio/effects/explosion1.ogg'));
     this.load.audio('powerup1', require('assets/audio/effects/powerup1.ogg'));
-    this.load.audio('powe1`rup2', require('assets/audio/effects/powerup2.ogg'));
+    this.load.audio('powerup2', require('assets/audio/effects/powerup2.ogg'));
     this.load.audio('step', require('assets/audio/effects/step.ogg'));
     this.load.audio('turn-on1', require('assets/audio/effects/turn-on1.ogg'));
   }

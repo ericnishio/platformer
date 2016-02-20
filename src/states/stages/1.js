@@ -1,4 +1,5 @@
 import {getTileCoordinate} from 'core/game';
+import {createDialogGroup} from 'util/dialog-box';
 import Stage from './stage';
 import Antenna from 'sprites/entities/structures/antenna';
 import Blaster from 'sprites/entities/items/blaster';
@@ -22,6 +23,8 @@ export default class Stage1 extends Stage {
     this.createFromObjects('Stars', 26, TwinklingStar, this.getDecorations());
 
     this.antenna = new Antenna(this.game, getTileCoordinate(52), getTileCoordinate(0));
+
+    // this.dialogBox = createDialogGroup(15, 8, this.game);
   }
 
   update() {
