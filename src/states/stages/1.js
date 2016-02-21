@@ -1,5 +1,6 @@
+import Phaser from 'phaser';
+
 import {getTileCoordinate} from 'core/game';
-import {createDialogGroup} from 'util/dialog-box';
 import Stage from './stage';
 import Antenna from 'sprites/entities/structures/antenna';
 import Blaster from 'sprites/entities/items/blaster';
@@ -7,6 +8,7 @@ import OxygenTank from 'sprites/entities/items/oxygen-tank';
 import PowerCell from 'sprites/entities/items/power-cell';
 import Crate from 'sprites/entities/structures/crate';
 import TwinklingStar from 'sprites/decorations/twinkling-star';
+import {createDialogGroup} from 'util/dialog-box';
 
 export default class Stage1 extends Stage {
   create() {
@@ -24,7 +26,18 @@ export default class Stage1 extends Stage {
 
     this.antenna = new Antenna(this.game, getTileCoordinate(52), getTileCoordinate(0));
 
-    // this.dialogBox = createDialogGroup(15, 8, this.game);
+    this.game.input.keyboard
+      .addKey(Phaser.Keyboard.ESC)
+      .onDown.add(this.openDialog, this);
+  }
+
+  openDialog() {
+    if (this.dialogBox) {
+      this.dialogBox.destroy();
+      delete this.dialogBox;
+    } else {
+      this.dialogBox = createDialogGroup(15, 8, this.game);
+    }
   }
 
   update() {
@@ -39,5 +52,8 @@ export default class Stage1 extends Stage {
         this.win();
       }
     }, null, this);
+  }
+
+  pauseUpdate() {
   }
 }

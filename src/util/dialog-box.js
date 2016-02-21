@@ -13,8 +13,8 @@ export function animateMessage(message, game) {
   const generator = messageGenerator(message);
 
   const text = game.add.bitmapText(
-    100,
-    200,
+    TILE_SIZE,
+    TILE_SIZE,
     'press-start-2p',
     '',
     16
@@ -22,17 +22,24 @@ export function animateMessage(message, game) {
 
   text.tint = 0xFFFFFF;
 
-  const timeEvent = game.time.events.loop(TYPE_SPEED, () => {
+  const timer = game.time.create(false);
+
+  timer.start();
+
+  const timeEvent = timer.loop(TYPE_SPEED, () => {
     const next = generator.next();
 
     if (next.done) {
       timeEvent.timer.destroy();
+      timer.destroy();
     }
 
     if (next.value) {
       text.setText(next.value.join(''));
     }
   }, game);
+
+  return text;
 }
 
 /**
@@ -98,6 +105,8 @@ export function createDialogGroup(widthInTiles, heightInTiles, game) {
     game.width / 2 - widthInTiles * TILE_SIZE / 2,
     game.height / 2 - heightInTiles * TILE_SIZE / 2
   );
+
+  group.add(animateMessage('Foo bar.', game));
 
   return group;
 }
