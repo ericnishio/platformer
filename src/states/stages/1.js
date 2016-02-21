@@ -8,7 +8,7 @@ import OxygenTank from 'sprites/entities/items/oxygen-tank';
 import PowerCell from 'sprites/entities/items/power-cell';
 import Crate from 'sprites/entities/structures/crate';
 import TwinklingStar from 'sprites/decorations/twinkling-star';
-import {createDialogGroup} from 'util/dialog-box';
+import {createDialogWithText} from 'util/dialog-box';
 
 export default class Stage1 extends Stage {
   create() {
@@ -36,7 +36,7 @@ export default class Stage1 extends Stage {
       this.dialogBox.destroy();
       delete this.dialogBox;
     } else {
-      this.dialogBox = createDialogGroup(15, 8, this.game);
+      this.dialogBox = createDialogWithText('Foo bar baz.', this.game);
     }
   }
 

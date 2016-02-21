@@ -2,62 +2,17 @@ import {Point} from 'phaser';
 
 import {TILE_SIZE} from 'core/game';
 
-const TYPE_SPEED = 150;
-
 /**
- * @param {Array} messages
- * @param {Game} game
- * @return {string}
+ * @param {string} text
+ * @param {Phaser.Game} game
+ * @return {Phaser.Group}
  */
-export function animateMessages(messages, game) {
-  const texts = [];
+export function createDialogWithText(text, game) {
+  const dialogGroup = createDialogGroup(15, 8, game);
 
-  messages.forEach(message => {
-    const generator = messageGenerator(message);
-    const index = messages.indexOf(message);
-    const xTileOffset = TILE_SIZE;
-    const yTileOffset = (index + 1) * TILE_SIZE;
+  dialogGroup.add(createAnimatedText(text, game));
 
-    const text = game.add.bitmapText(xTileOffset, yTileOffset, 'press-start-2p', '', 8);
-
-    text.tint = 0xFFFFFF;
-
-    const timer = game.time.create(false);
-
-    timer.start();
-
-    const timeEvent = timer.loop(TYPE_SPEED, () => {
-      const next = generator.next();
-
-      if (next.done) {
-        timeEvent.timer.destroy();
-        timer.destroy();
-      }
-
-      if (next.value) {
-        text.setText(next.value.join(''));
-      }
-    }, game);
-
-    texts.push(text);
-  });
-
-  return texts;
-}
-
-/**
- * @param {string} message
- * @return {Generator}
- */
-function* messageGenerator(message) {
-  const characters = message.split('');
-  const nextCharacters = [];
-
-  for (const character of characters) {
-    nextCharacters.push(character);
-
-    yield nextCharacters;
-  }
+  return dialogGroup;
 }
 
 /**
@@ -66,7 +21,7 @@ function* messageGenerator(message) {
  * @param {Phaser.Game} game
  * @return {Phaser.Group}
  */
-export function createDialogGroup(widthInTiles, heightInTiles, game) {
+function createDialogGroup(widthInTiles, heightInTiles, game) {
   const spritesheet = 'menus-1x1-1';
   const group = game.add.group();
 
@@ -110,15 +65,34 @@ export function createDialogGroup(widthInTiles, heightInTiles, game) {
     game.height / 2 - heightInTiles * TILE_SIZE / 2
   );
 
-  const messages = animateMessages([
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    'abcdefghijklmnopqrstuvwxyz',
-    'a,as.df,.asd,f.asd,f.ads,f'
-  ], game);
-
-  messages.forEach(message => {
-    group.add(message);
-  });
-
   return group;
+}
+
+/**
+ * @param {string} message
+ * @param {Phaser.Game} game
+ * @return {Phaser.BitmapText}
+ */
+function createAnimatedText(message, game) {
+  const words = message.split('');
+  const bmpText = game.add.bitmapText(TILE_SIZE, TILE_SIZE, 'press-start-2p', '', 8);
+
+  let text = '';
+  let currentIndex = 0;
+
+  bmpText.maxWidth = 12 * TILE_SIZE;
+
+  game.time.events.repeat(120, words.length, addText, this);
+
+  function addText() {
+    let word = words[currentIndex];
+
+    currentIndex++;
+
+    text += word;
+
+    bmpText.text = text;
+  }
+
+  return bmpText;
 }
