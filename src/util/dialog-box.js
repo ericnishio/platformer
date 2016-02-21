@@ -5,41 +5,44 @@ import {TILE_SIZE} from 'core/game';
 const TYPE_SPEED = 150;
 
 /**
- * @param {string} message
+ * @param {Array} messages
  * @param {Game} game
  * @return {string}
  */
-export function animateMessage(message, game) {
-  const generator = messageGenerator(message);
+export function animateMessages(messages, game) {
+  const texts = [];
 
-  const text = game.add.bitmapText(
-    TILE_SIZE,
-    TILE_SIZE,
-    'press-start-2p',
-    '',
-    16
-  );
+  messages.forEach(message => {
+    const generator = messageGenerator(message);
+    const index = messages.indexOf(message);
+    const xTileOffset = TILE_SIZE;
+    const yTileOffset = (index + 1) * TILE_SIZE;
 
-  text.tint = 0xFFFFFF;
+    const text = game.add.bitmapText(xTileOffset, yTileOffset, 'press-start-2p', '', 8);
 
-  const timer = game.time.create(false);
+    text.tint = 0xFFFFFF;
 
-  timer.start();
+    const timer = game.time.create(false);
 
-  const timeEvent = timer.loop(TYPE_SPEED, () => {
-    const next = generator.next();
+    timer.start();
 
-    if (next.done) {
-      timeEvent.timer.destroy();
-      timer.destroy();
-    }
+    const timeEvent = timer.loop(TYPE_SPEED, () => {
+      const next = generator.next();
 
-    if (next.value) {
-      text.setText(next.value.join(''));
-    }
-  }, game);
+      if (next.done) {
+        timeEvent.timer.destroy();
+        timer.destroy();
+      }
 
-  return text;
+      if (next.value) {
+        text.setText(next.value.join(''));
+      }
+    }, game);
+
+    texts.push(text);
+  });
+
+  return texts;
 }
 
 /**
@@ -64,37 +67,38 @@ function* messageGenerator(message) {
  * @return {Phaser.Group}
  */
 export function createDialogGroup(widthInTiles, heightInTiles, game) {
+  const spritesheet = 'menus-1x1-1';
   const group = game.add.group();
 
   for (let x = 0; x < widthInTiles; x++) {
     for (let y = 0; y < heightInTiles; y++) {
       if (x === 0 && y === 0) {
         // top left corner
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 9));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 9));
       } else if (x !== 0 && x !== widthInTiles - 1 && y === 0) {
         // top straight
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 10));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 10));
       } else if (x === widthInTiles - 1 && y === 0) {
         // top right corner
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 11));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 11));
       } else if (x === 0 && y > 0 && y !== heightInTiles - 1) {
         // left straight
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 17));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 17));
       } else if (x === widthInTiles - 1 && y !== 0 && y !== heightInTiles - 1) {
         // right straight
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 19));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 19));
       } else if (x === 0 && y === heightInTiles - 1) {
         // bottom left corner
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 25));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 25));
       } else if (y === heightInTiles - 1 && x > 0 && x < widthInTiles - 1) {
         // bottom straight
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 26));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 26));
       } else if (x === widthInTiles - 1 && y === heightInTiles - 1) {
         // bottom right corner
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 27));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 27));
       } else {
         // blank
-        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, 'menus-1x1-1', 18));
+        group.add(game.add.sprite(TILE_SIZE * x, TILE_SIZE * y, spritesheet, 18));
       }
     }
   }
@@ -106,7 +110,15 @@ export function createDialogGroup(widthInTiles, heightInTiles, game) {
     game.height / 2 - heightInTiles * TILE_SIZE / 2
   );
 
-  group.add(animateMessage('Foo bar.', game));
+  const messages = animateMessages([
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    'abcdefghijklmnopqrstuvwxyz',
+    'a,as.df,.asd,f.asd,f.ads,f'
+  ], game);
+
+  messages.forEach(message => {
+    group.add(message);
+  });
 
   return group;
 }
