@@ -1,16 +1,16 @@
-import {Point} from 'phaser';
+import Phaser, {Point} from 'phaser';
 
 import {TILE_SIZE} from 'core/game';
 
 /**
- * @param {string} text
+ * @param {Array} messages
  * @param {Phaser.Game} game
  * @return {Phaser.Group}
  */
-export function createDialogWithText(text, game) {
+export function createMessageDialog(messages, game) {
   const dialogGroup = createDialogGroup(15, 8, game);
 
-  dialogGroup.add(createAnimatedText(text, game));
+  dialogGroup.add(animateMessages(messages, dialogGroup, game));
 
   return dialogGroup;
 }
@@ -69,29 +69,75 @@ function createDialogGroup(widthInTiles, heightInTiles, game) {
 }
 
 /**
- * @param {string} message
+ * @param {string[]} messages
+ * @param {Phaser.Group} dialogGroup
  * @param {Phaser.Game} game
  * @return {Phaser.BitmapText}
  */
-function createAnimatedText(message, game) {
-  const words = message.split('');
-  const bmpText = game.add.bitmapText(TILE_SIZE, TILE_SIZE, 'press-start-2p', '', 8);
+function animateMessages(messages, dialogGroup, game) {
+  let currentMessageIndex = 0;
 
-  let text = '';
-  let currentIndex = 0;
+  const bmpText = game.add.bitmapText(TILE_SIZE, TILE_SIZE, 'press-start-2p', '', 10);
 
   bmpText.maxWidth = 12 * TILE_SIZE;
 
-  game.time.events.repeat(120, words.length, addText, this);
+  animateSet(messages[currentMessageIndex]);
 
-  function addText() {
-    let word = words[currentIndex];
+  /**
+   * @param {string} message
+   */
+  function animateSet(message) {
+    const words = message.split('');
 
-    currentIndex++;
+    let currentIndex = 0;
+    let text = '';
 
-    text += word;
+    game.time.events.repeat(120, message.length, updateText, this);
 
-    bmpText.text = text;
+    currentMessageIndex += 1;
+
+    function updateText() {
+      let word = words[currentIndex];
+
+      currentIndex++;
+
+      text += word;
+
+      bmpText.text = text;
+
+      if (text.length === words.length && currentMessageIndex === messages.length) {
+        game.input.keyboard
+          .addKey(Phaser.Keyboard.ENTER)
+          .onDown.add(() => {
+            dialogGroup.destroy();
+            game.input.keyboard.removeKey(Phaser.Keyboard.ENTER);
+          }, this);
+      }
+
+      if (text.length === words.length && currentMessageIndex < messages.length) {
+        let canContinue = false;
+
+        game.input.keyboard
+          .addKey(Phaser.Keyboard.ENTER)
+          .onDown.add(() => {
+            canContinue = true;
+          }, this);
+
+        const timer = game.time.create(false);
+
+        timer.loop(100, () => {
+          if (canContinue) {
+            animateSet(messages[currentMessageIndex]);
+
+            game.input.keyboard.removeKey(Phaser.Keyboard.ENTER);
+
+            timer.destroy();
+          }
+        }, this);
+
+        timer.start();
+      }
+    }
   }
 
   return bmpText;
