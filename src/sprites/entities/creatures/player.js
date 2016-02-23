@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import {Camera, Timer} from 'phaser';
 
 import {getGame} from 'core/game';
 import Entity from 'sprites/entities/entity';
@@ -37,7 +37,7 @@ export class Player extends Entity {
       canWieldBlaster(this)
     );
 
-    game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON);
+    this.game.camera.follow(this, Camera.FOLLOW_LOCKON);
 
     this.anchor.setTo(0.5, 1);
     this.decreaseHeightBy(5);
@@ -50,7 +50,7 @@ export class Player extends Entity {
       this.kill();
       this.effects.burn.play();
 
-      this.game.time.events.add(Phaser.Timer.SECOND * 1, () => {
+      this.game.time.events.add(Timer.SECOND * 1, () => {
         this.game.state.start('Stage1', true, false);
       });
     }
