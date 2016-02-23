@@ -1,5 +1,3 @@
-import {Camera} from 'phaser';
-
 import {getGame} from 'core/game';
 import Entity from 'sprites/entities/entity';
 import isAffectedByGravity from 'sprites/traits/is-affected-by-gravity';
@@ -36,8 +34,6 @@ export class Player extends Entity {
       canJump(this),
       canWieldBlaster(this)
     );
-
-    this.game.camera.follow(this, Camera.FOLLOW_LOCKON);
 
     this.anchor.setTo(0.5, 1);
     this.decreaseHeightBy(5);

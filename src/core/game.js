@@ -12,8 +12,8 @@ let _game;
  */
 export default function createGame() {
   _game = new Game(
-    427,
-    240,
+    400,
+    225,
     Phaser.AUTO,
     'phaser',
     null,

@@ -1,4 +1,4 @@
-import {Physics, Timer, Keyboard, Gamepad} from 'phaser';
+import {Camera, Physics, Timer, Keyboard, Gamepad} from 'phaser';
 
 import {TILE_SIZE} from 'core/game';
 import GameState from 'states/game-state';
@@ -55,6 +55,7 @@ export default class Stage extends GameState {
   createPlayer(x, y) {
     this.player = Player(x, y);
     this.oxygenMeter = OxygenMeter(this.getPlayer());
+    this.game.camera.follow(this.player, Camera.FOLLOW_LOCKON);
   }
 
   /**
