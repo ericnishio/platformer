@@ -11,21 +11,21 @@ export default class Stage extends GameState {
    * @param {string[]} tilesets
    */
   createStage(tilemap, tilesets) {
-    this.level = this.game.add.tilemap(tilemap, TILE_SIZE, TILE_SIZE);
+    this.stage = this.game.add.tilemap(tilemap, TILE_SIZE, TILE_SIZE);
 
     tilesets.forEach(tileset => {
-      this.level.addTilesetImage(tileset);
+      this.stage.addTilesetImage(tileset);
     });
 
-    this.sky = this.level.createLayer('Sky');
+    this.sky = this.stage.createLayer('Sky');
     this.sky.resizeWorld();
     this.decorations = this.game.add.group();
-    this.platforms = this.level.createLayer('Platforms');
-    this.hazard = this.level.createLayer('Hazard');
+    this.platforms = this.stage.createLayer('Platforms');
+    this.hazard = this.stage.createLayer('Hazard');
     this.items = this.game.add.group();
 
-    this.level.setCollisionByExclusion([], true, 'Platforms');
-    this.level.setCollisionByExclusion([], true, 'Hazard');
+    this.stage.setCollisionByExclusion([], true, 'Platforms');
+    this.stage.setCollisionByExclusion([], true, 'Hazard');
 
     this.initObstacles();
     this.initExplosions();
@@ -60,7 +60,7 @@ export default class Stage extends GameState {
    * Creates objects from a tilemap's object layer.
    */
   createFromObjects(layerName, gid, customClass, group) {
-    this.level.createFromObjects(layerName, gid, null, null, true, false, group, customClass, true);
+    this.stage.createFromObjects(layerName, gid, null, null, true, false, group, customClass, true);
   }
 
   /**
@@ -122,7 +122,7 @@ export default class Stage extends GameState {
     if (!this.isVictorious()) {
       this.victorious = true;
 
-      console.log('You beat the level.');
+      console.log('You beat the stage.');
 
       this.game.time.events.add(Phaser.Timer.SECOND * 1.5, () => {
         this.game.state.start('StageClear', true, false);
@@ -131,7 +131,7 @@ export default class Stage extends GameState {
   }
 
   /**
-   * Checks if the level has been beaten.
+   * Checks if the stage has been beaten.
    * @return {boolean}
    */
   isVictorious() {
