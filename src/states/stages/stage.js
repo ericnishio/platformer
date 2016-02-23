@@ -37,12 +37,6 @@ export default class Stage extends GameState {
 
     this.pad1 = this.game.input.gamepad.pad1;
     this.game.input.gamepad.start();
-
-    this.game.input.keyboard
-      .addKey(Keyboard.ESC)
-      .onDown.add(() => {
-        this.win();
-      }, this);
   }
 
   /**
