@@ -1,4 +1,4 @@
-import Item from './item';
+import Item, {TYPE_FIREARM} from './item';
 import {getGame} from 'core/game';
 
 /**
@@ -21,7 +21,7 @@ export class Blaster extends Item {
 
     this.power = 3;
     this.name = 'Blaster';
-    this.itemType = Item.ITEM_TYPE_FIREARM;
+    this.itemType = TYPE_FIREARM;
 
     this.effects.pickup = this.game.add.audio('powerup2', 1, false);
   }

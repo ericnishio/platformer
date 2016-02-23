@@ -1,4 +1,4 @@
-import Item from './item';
+import Item, {TYPE_MISSION_ITEM} from './item';
 import {getGame} from 'core/game';
 
 /**
@@ -20,7 +20,7 @@ export class PowerCell extends Item {
     super(game, x, y, 'items-1x1-1', 2);
 
     this.name = 'Power Cell';
-    this.itemType = Item.ITEM_TYPE_MISSION_ITEM;
+    this.itemType = TYPE_MISSION_ITEM;
 
     this.effects.pickup = this.game.add.audio('powerup2', 1, false);
   }

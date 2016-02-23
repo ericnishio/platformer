@@ -1,6 +1,6 @@
 import {Physics} from 'phaser';
 
-import Item from 'sprites/entities/items/item';
+import {TYPE_FIREARM} from 'sprites/entities/items/item';
 
 export default sprite => {
   const trait = Object.assign({}, sprite, {
@@ -24,7 +24,7 @@ export default sprite => {
     },
 
     fire() {
-      if (sprite.hasItemByType(Item.ITEM_TYPE_FIREARM) && sprite.game.time.now > trait.bulletTime) {
+      if (sprite.hasItemByType(TYPE_FIREARM) && sprite.game.time.now > trait.bulletTime) {
         const bullet = trait.bullets.getFirstDead();
 
         bullet.body.setSize(sprite.width - 3, sprite.height - 7);

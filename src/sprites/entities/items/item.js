@@ -1,5 +1,9 @@
 import Entity from 'sprites/entities/entity';
 
+export const TYPE_POWERUP = 'POWERUP';
+export const TYPE_FIREARM = 'FIREARM';
+export const TYPE_MISSION_ITEM = 'MISSION_ITEM';
+
 export default class Item extends Entity {
   /**
   * @param {Phaser.Game} game
@@ -10,10 +14,6 @@ export default class Item extends Entity {
    */
   constructor(game, x, y, spritesheet, tileIndex) {
     super(game, x, y, spritesheet, tileIndex);
-
-    this.ITEM_TYPE_POWERUP = 'POWERUP';
-    this.ITEM_TYPE_FIREARM = 'FIREARM';
-    this.ITEM_TYPE_MISSION_ITEM = 'MISSION_ITEM';
 
     this.maxInInventory = Infinity;
 

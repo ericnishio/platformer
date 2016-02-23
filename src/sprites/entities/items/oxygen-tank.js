@@ -1,4 +1,4 @@
-import Item from './item';
+import Item, {TYPE_POWERUP} from './item';
 import {getGame} from 'core/game';
 
 /**
@@ -20,7 +20,7 @@ export class OxygenTank extends Item {
     super(game, x, y, 'items-1x1-1', 0);
 
     this.name = 'Oxygen Tank';
-    this.itemType = Item.ITEM_TYPE_POWERUP;
+    this.itemType = TYPE_POWERUP;
 
     this.effects.pickup = this.game.add.audio('powerup1', 1, false);
   }
