@@ -1,17 +1,16 @@
 import {Keyboard} from 'phaser';
 
+import {TILE_SIZE, getGame} from 'core/game';
 import box from 'ui/box';
-import {TILE_SIZE} from 'core/game';
 
 /**
  * @param {Array} messages
- * @param {Phaser.Game} game
  * @return {Phaser.Group}
  */
-export default function speechBubble(messages, game) {
-  const container = box(15, 8, game);
+export default function speechBubble(messages) {
+  const container = box(15, 8);
 
-  container.add(animateMessages(messages, container, game));
+  container.add(animateMessages(messages, container));
 
   return container;
 }
@@ -19,10 +18,11 @@ export default function speechBubble(messages, game) {
 /**
  * @param {string[]} messages
  * @param {Phaser.Group} container
- * @param {Phaser.Game} game
  * @return {Phaser.BitmapText}
  */
-function animateMessages(messages, container, game) {
+function animateMessages(messages, container) {
+  const game = getGame();
+
   let currentMessageIndex = 0;
 
   const bitmapText = game.add.bitmapText(TILE_SIZE, TILE_SIZE, 'press-start-2p', '', 10);

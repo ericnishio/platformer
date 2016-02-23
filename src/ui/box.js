@@ -1,15 +1,16 @@
 import {Point} from 'phaser';
 
+import {getGame} from 'core/game';
 import {TILE_SIZE} from 'core/game';
 
 /**
  * @param {number} widthInTiles
  * @param {number} heightInTiles
- * @param {Phaser.Game} game
  * @return {Phaser.Group}
  */
-export default function box(widthInTiles, heightInTiles, game) {
+export default function box(widthInTiles, heightInTiles) {
   const spritesheet = 'menus-1x1-1';
+  const game = getGame();
   const group = game.add.group();
 
   for (let x = 0; x < widthInTiles; x++) {

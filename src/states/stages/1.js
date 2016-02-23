@@ -39,7 +39,7 @@ export default class Stage1 extends Stage {
       this.speechBubble = speechBubble([
         'A long time ago',
         'In a galaxy far,\nfar away.'
-      ], this.game);
+      ]);
     }
   }
 

@@ -9,6 +9,7 @@ export const TILE_SIZE = 16;
 export const PIXEL_SCALE = 2;
 
 let _store;
+let _game;
 
 /**
  * @param {Object} store
@@ -17,7 +18,7 @@ let _store;
 export default function createGame(store) {
   _store = store;
 
-  const _game = new Game(
+  _game = new Game(
     427,
     240,
     Phaser.AUTO,
@@ -34,6 +35,13 @@ export default function createGame(store) {
 
   _game.state.start('Boot');
 
+  return _game;
+}
+
+/**
+ * @return {Phaser.Game}
+ */
+export function getGame() {
   return _game;
 }
 
