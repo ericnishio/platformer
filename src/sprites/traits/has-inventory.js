@@ -7,7 +7,6 @@ export default sprite => {
     inventory: [],
 
     /**
-     * Checks if the creature carries an item.
      * @param {Item} item
      * @return {boolean}
      */
@@ -16,7 +15,6 @@ export default sprite => {
     },
 
     /**
-     * Checks if the creature carries an item by item type.
      * @param {string} itemType
      * @return {boolean}
      */
@@ -33,7 +31,6 @@ export default sprite => {
     },
 
     /**
-     * Checks if the creature carries an item.
      * @param {string} itemName
      * @return {boolean}
      */
@@ -50,7 +47,6 @@ export default sprite => {
     },
 
     /**
-     * Returns the inventory count for the given item type.
      * @param {Item} item
      * @return {number}
      */
@@ -67,7 +63,6 @@ export default sprite => {
     },
 
     /**
-     * Adds an item to the inventory.
      * @param {Item} item
      */
     addToInventory(item) {
@@ -77,7 +72,6 @@ export default sprite => {
     },
 
     /**
-     * Checks if an item can be added to the inventory.
      * @param {Item} item
      * @return {boolean}
      */

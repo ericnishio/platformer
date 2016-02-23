@@ -5,7 +5,7 @@ import {LEFT, RIGHT} from 'phaser';
  * @return {Phaser.Sprite}
  */
 export default sprite => {
-  return Object.assign({}, sprite, {
+  const trait = Object.assign({}, sprite, {
     facingX: RIGHT,
     speed: 50,
 
@@ -24,7 +24,6 @@ export default sprite => {
     },
 
     /**
-     * Sets the creature's speed.
      * @param {number} speed
      */
     setSpeed(speed) {
@@ -32,29 +31,21 @@ export default sprite => {
     },
 
     /**
-     * Returns the creature's speed.
      * @return {number}
      */
     getSpeed() {
       return this.speed;
     },
 
-    /**
-     * Sets this.facingX to Phaser.RIGHT.
-     */
     faceRight() {
       this.facingX = RIGHT;
     },
 
-    /**
-     * Sets this.facingX to Phaser.LEFT.
-     */
     faceLeft() {
       this.facingX = LEFT;
     },
 
     /**
-     * Checks if the creature is facing right.
      * @return {boolean}
      */
     isFacingRight() {
@@ -62,11 +53,15 @@ export default sprite => {
     },
 
     /**
-     * Checks if the creature is facing left.
      * @return {boolean}
      */
     isFacingLeft() {
       return this.facingX === LEFT;
     }
   });
+
+  trait.animations.add('walkRight', [1, 2, 0], 5, false);
+  trait.animations.add('walkLeft', [9, 10, 8], 5, false);
+
+  return trait;
 };

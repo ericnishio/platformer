@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 import Entity from 'sprites/entities/entity';
 import hasInventory from 'sprites/traits/has-inventory';
 import canWalk from 'sprites/traits/can-walk';
+import canJump from 'sprites/traits/can-jump';
 import isAffectedByGravity from 'sprites/traits/is-affected-by-gravity';
 import Item from 'sprites/entities/items/item';
 
@@ -15,7 +16,13 @@ export default class Player extends Entity {
   constructor(game, x, y) {
     super(game, x, y, 'creatures-1x2-1', 0);
 
-    Object.assign(this, hasInventory(this), canWalk(this), isAffectedByGravity(this));
+    Object.assign(
+      this,
+      hasInventory(this),
+      canWalk(this),
+      canJump(this),
+      isAffectedByGravity(this)
+    );
 
     game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON);
 
@@ -23,18 +30,9 @@ export default class Player extends Entity {
 
     this.setSpeed(80);
 
-    const animationFrameRate = 5;
-
     this.anchor.setTo(0.5, 1);
     this.decreaseHeightBy(5);
 
-    this.animations.add('walkRight', [1, 2, 0], animationFrameRate, false);
-    this.animations.add('walkLeft', [9, 10, 8], animationFrameRate, false);
-
-    this.animations.add('jumpLeft', [8], animationFrameRate, false); // TODO: Replace animation.
-    this.animations.add('jumpRight', [0], animationFrameRate, false); // TODO: Replace animation.
-
-    this.effects.step = this.game.add.audio('step', 1, false);
     this.effects.burn = this.game.add.audio('combustion1', 1, false);
     this.effects.shoot = this.game.add.audio('laser1', 1, false);
 
@@ -59,7 +57,6 @@ export default class Player extends Entity {
   }
 
   /**
-   * Returns the bullet group.
    * @return {Phaser.Group}
    */
   getBullets() {
@@ -93,7 +90,6 @@ export default class Player extends Entity {
   }
 
   /**
-   * Sets the amount of oxygen in the player's tank.
    * @param {number} oxygen
    */
   setOxygen(oxygen) {
@@ -107,7 +103,6 @@ export default class Player extends Entity {
   }
 
   /**
-   * Increases the player's oxygen level by the given amount.
    * @param {number} increment
    */
   increaseOxygenBy(increment) {
@@ -115,7 +110,6 @@ export default class Player extends Entity {
   }
 
   /**
-   * Returns the amount of oxygen in the player's tank.
    * @return {number}
    */
   getOxygen() {
@@ -123,7 +117,6 @@ export default class Player extends Entity {
   }
 
   /**
-   * Returns the player's oxygen level as a percentage.
    * @return {number}
    */
   getOxygenAsPercentage() {
@@ -131,7 +124,6 @@ export default class Player extends Entity {
   }
 
   /**
-   * Sets the player's oxygen tank capacity.
    * @param {number} maxOxygen
    */
   setMaxOxygen(maxOxygen) {
@@ -139,7 +131,6 @@ export default class Player extends Entity {
   }
 
   /**
-   * Returns the player's oxygen tank capacity.
    * @return {number}
    */
   getMaxOxygen() {
@@ -166,25 +157,6 @@ export default class Player extends Entity {
     }
   }
 
-  /**
-   * @return {boolean}
-   */
-  canJump() {
-    return this.body.onFloor() || this.body.touching.down;
-  }
-
-  jump() {
-    this.body.velocity.y = -(this.getSpeed() * 1.8);
-
-    if (this.isFacingLeft()) {
-      this.animations.play('jumpLeft');
-    } else {
-      this.animations.play('jumpRight');
-    }
-
-    this.effects.step.play();
-  }
-
   fire() {
     if (this.hasItemByType(Item.ITEM_TYPE_FIREARM) && this.game.time.now > this.bulletTime) {
       const bullet = this.bullets.getFirstDead();
@@ -194,6 +166,7 @@ export default class Player extends Entity {
       if (bullet) {
         bullet.reset(this.getBulletOffsetX(), this.getBulletOffsetY());
         bullet.body.velocity.x = this.getBulletVelocity(420);
+
         this.bulletTime = this.game.time.now + 200;
       }
 

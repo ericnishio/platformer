@@ -4,7 +4,7 @@ import {TILE_SIZE, getGame} from 'core/game';
 import box from 'ui/box';
 
 /**
- * @param {Array} messages
+ * @param {string[]} messages
  * @return {Phaser.Group}
  */
 export default function speechBubble(messages) {
