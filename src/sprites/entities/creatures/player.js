@@ -35,8 +35,6 @@ export default class Player extends Entity {
     this.decreaseHeightBy(5);
 
     this.effects.burn = this.game.add.audio('combustion1', 1, false);
-
-    this.initBullets();
   }
 
   registerGamepad() {

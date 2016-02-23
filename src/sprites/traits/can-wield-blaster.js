@@ -68,5 +68,7 @@ export default sprite => {
 
   trait.effects.shoot = sprite.game.add.audio('laser1', 1, false);
 
+  trait.initBullets();
+
   return trait;
 };
