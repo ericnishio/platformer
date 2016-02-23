@@ -1,9 +1,12 @@
 import Phaser from 'phaser';
 
-import Creature from './creature';
+import Entity from 'sprites/entities/entity';
+import hasInventory from 'sprites/traits/has-inventory';
+import canWalk from 'sprites/traits/can-walk';
+import isAffectedByGravity from 'sprites/traits/is-affected-by-gravity';
 import Item from 'sprites/entities/items/item';
 
-export default class Player extends Creature {
+export default class Player extends Entity {
   /**
    * @param {Phaser.Game} game
    * @param {number} x
@@ -11,6 +14,8 @@ export default class Player extends Creature {
    */
   constructor(game, x, y) {
     super(game, x, y, 'creatures-1x2-1', 0);
+
+    Object.assign(this, hasInventory(this), canWalk(this), isAffectedByGravity(this));
 
     game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON);
 
