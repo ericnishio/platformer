@@ -1,6 +1,13 @@
 import {State, Timer} from 'phaser';
 
+import {startStage} from 'core/game';
+
 export default class StageClear extends State {
+  init(params) {
+    this.nextStageName = params.nextStageName;
+    this.nextStageClass = params.nextStageClass;
+  }
+
   create() {
     super.create();
 
@@ -15,11 +22,7 @@ export default class StageClear extends State {
     text.anchor.setTo(0.5, 0.5);
 
     this.game.time.events.add(Timer.SECOND * 3, () => {
-      this.startNextStage();
+      startStage(this.nextStageName, this.nextStageClass);
     });
-  }
-
-  startNextStage() {
-    this.game.state.start('Stage1', true, false);
   }
 }

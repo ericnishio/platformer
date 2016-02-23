@@ -1,11 +1,16 @@
-import Phaser from 'phaser';
+import {Physics, Timer, Keyboard, Gamepad} from 'phaser';
 
 import {TILE_SIZE} from 'core/game';
 import GameState from 'states/game-state';
+import StageClear from 'states/stage-clear';
 import Player from 'sprites/entities/creatures/player';
 import OxygenMeter from 'ui/oxygen-meter';
 
 export default class Stage extends GameState {
+  create() {
+    this.game.state.add('StageClear', StageClear, false);
+  }
+
   /**
    * @param {string} tilemap
    * @param {string[]} tilesets
@@ -32,6 +37,21 @@ export default class Stage extends GameState {
 
     this.pad1 = this.game.input.gamepad.pad1;
     this.game.input.gamepad.start();
+
+    this.game.input.keyboard
+      .addKey(Keyboard.ESC)
+      .onDown.add(() => {
+        this.win();
+      }, this);
+  }
+
+  /**
+   * @param {string} stageName
+   * @param {Stage} stageClass
+   */
+  setNextStage(stageName, stageClass) {
+    this.nextStageName = stageName;
+    this.nextStageClass = stageClass;
   }
 
   /**
@@ -53,7 +73,7 @@ export default class Stage extends GameState {
   initObstacles() {
     this.obstacles = this.game.add.group();
     this.obstacles.enableBody = true;
-    this.obstacles.physicsBodyType = Phaser.Physics.ARCADE;
+    this.obstacles.physicsBodyType = Physics.ARCADE;
   }
 
   /**
@@ -124,8 +144,11 @@ export default class Stage extends GameState {
 
       console.log('You beat the stage.');
 
-      this.game.time.events.add(Phaser.Timer.SECOND * 1.5, () => {
-        this.game.state.start('StageClear', true, false);
+      this.game.time.events.add(Timer.SECOND * 1.5, () => {
+        this.game.state.start('StageClear', true, false, {
+          nextStageName: this.nextStageName,
+          nextStageClass: this.nextStageClass
+        });
       });
     }
   }
@@ -141,30 +164,39 @@ export default class Stage extends GameState {
   handleInput() {
     this.getPlayer().body.velocity.x = 0;
 
-    if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+    if (this.game.input.keyboard.isDown(Keyboard.LEFT) || this.pad1.isDown(Gamepad.XBOX360_DPAD_LEFT) || this.pad1.axis(Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
       this.getPlayer().walkLeft();
     }
 
-    if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) || this.pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+    if (this.game.input.keyboard.isDown(Keyboard.RIGHT) || this.pad1.isDown(Gamepad.XBOX360_DPAD_RIGHT) || this.pad1.axis(Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
       this.getPlayer().walkRight();
     }
 
-    if (this.getPlayer().canJump() && (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) || this.game.input.keyboard.isDown(Phaser.Keyboard.S) || this.pad1.isDown(Phaser.Gamepad.XBOX360_X))) {
+    if (this.getPlayer().canJump() && (this.game.input.keyboard.isDown(Keyboard.UP) || this.game.input.keyboard.isDown(Keyboard.S) || this.pad1.isDown(Gamepad.XBOX360_X))) {
       this.getPlayer().jump();
     }
 
-    if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.pad1.isDown(Phaser.Gamepad.XBOX360_Y)) {
+    if (this.game.input.keyboard.isDown(Keyboard.SPACEBAR) || this.game.input.keyboard.isDown(Keyboard.D) || this.pad1.isDown(Gamepad.XBOX360_Y)) {
       this.getPlayer().fire();
     }
   }
 
+  die() {
+    this.getPlayer().die();
+
+    this.game.time.events.add(Timer.SECOND * 1, () => {
+      this.game.state.restart();
+    });
+  }
+
   update() {
     this.game.physics.arcade.collide(this.getPlayer(), this.getPlatforms());
-    this.game.physics.arcade.collide(this.getPlayer(), this.getHazard(), this.getPlayer().die, null, this.getPlayer());
+    this.game.physics.arcade.collide(this.getPlayer(), this.getHazard(), this.die.bind(this), null, this.getPlayer());
 
     if (this.getPlayer().alive && !this.getPlayer().hasOxygen()) {
       console.log('You ran out of oxygen.');
-      this.getPlayer().die();
+
+      this.die();
     }
 
     this.getItems().forEachAlive((item) => {

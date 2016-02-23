@@ -1,4 +1,4 @@
-import {Camera, Timer} from 'phaser';
+import {Camera} from 'phaser';
 
 import {getGame} from 'core/game';
 import Entity from 'sprites/entities/entity';
@@ -49,10 +49,6 @@ export class Player extends Entity {
     if (this.alive) {
       this.kill();
       this.effects.burn.play();
-
-      this.game.time.events.add(Timer.SECOND * 1, () => {
-        this.game.state.start('Stage1', true, false);
-      });
     }
   }
 }
