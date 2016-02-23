@@ -112,9 +112,9 @@ export default class Stage extends GameState {
     this.explosions = this.game.add.group();
     this.explosions.createMultiple(10, 'effects-1x1-1');
 
-    this.explosions.forEach(function(explosion) {
+    this.explosions.forEach(explosion => {
       explosion.anchor.setTo(0.5, 0.5);
-      explosion.animations.add('explode', [0, 1, 1, 2, 3, 4, 3, 2], 4, false);
+      explosion.animations.add('explode', [4, 3, 2, 4, 3, 3, 2, 2, 0], 4, false);
     }, this);
   }
 
