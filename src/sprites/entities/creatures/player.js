@@ -5,7 +5,7 @@ import Item from 'sprites/entities/items/item';
 
 export default class Player extends Creature {
   /**
-   * @param {Game} game
+   * @param {Phaser.Game} game
    * @param {number} x
    * @param {number} y
    */

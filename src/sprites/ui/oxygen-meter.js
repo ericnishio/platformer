@@ -2,7 +2,7 @@ import {Sprite} from 'phaser';
 
 export default class OxygenMeter extends Sprite {
   /**
-   * @param {Game} game
+   * @param {Phaser.Game} game
    * @param {Player} player
    */
   constructor(game, player) {

@@ -23,6 +23,7 @@ module.exports = {
       states: path.join(__dirname, 'src/states'),
       stages: path.join(__dirname, 'src/states/stages'),
       sprites: path.join(__dirname, 'src/sprites'),
+      ui: path.join(__dirname, 'src/ui'),
       util: path.join(__dirname, 'src/util')
     },
     extensions: ['', '.js', '.jsx']

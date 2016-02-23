@@ -3,7 +3,7 @@ import Player from 'sprites/entities/creatures/player';
 
 export default class PowerCell extends Item {
   /**
-   * @param {Game} game
+   * @param {Phaser.Game} game
    * @param {number} x
    * @param {number} y
    */

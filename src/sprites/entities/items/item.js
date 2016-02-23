@@ -2,7 +2,7 @@ import Entity from 'sprites/entities/entity';
 
 export default class Item extends Entity {
   /**
-  * @param {Game} game
+  * @param {Phaser.Game} game
   * @param {number} x
   * @param {number} y
   * @param {string} spritesheet

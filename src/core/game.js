@@ -12,7 +12,7 @@ let _store;
 
 /**
  * @param {Object} store
- * @return {Game}
+ * @return {Phaser.Game}
  */
 export default function createGame(store) {
   _store = store;

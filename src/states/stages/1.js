@@ -8,7 +8,7 @@ import OxygenTank from 'sprites/entities/items/oxygen-tank';
 import PowerCell from 'sprites/entities/items/power-cell';
 import Crate from 'sprites/entities/structures/crate';
 import TwinklingStar from 'sprites/decorations/twinkling-star';
-import {createMessageDialog} from 'util/dialog-box';
+import speechBubble from 'ui/speech-bubble';
 
 export default class Stage1 extends Stage {
   create() {
@@ -28,15 +28,15 @@ export default class Stage1 extends Stage {
 
     this.game.input.keyboard
       .addKey(Phaser.Keyboard.ESC)
-      .onDown.add(this.openDialog, this);
+      .onDown.add(this.testSpeechBubble, this);
   }
 
-  openDialog() {
-    if (this.dialogBox) {
-      this.dialogBox.destroy();
-      delete this.dialogBox;
+  testSpeechBubble() {
+    if (this.speechBubble) {
+      this.speechBubble.destroy();
+      delete this.speechBubble;
     } else {
-      this.dialogBox = createMessageDialog([
+      this.speechBubble = speechBubble([
         'A long time ago',
         'In a galaxy far,\nfar away.'
       ], this.game);

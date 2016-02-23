@@ -2,7 +2,7 @@ import Structure from './structure';
 
 export default class Antenna extends Structure {
   /**
-   * @param {Game} game
+   * @param {Phaser.Game} game
    * @param {number} x
    * @param {number} y
    */

@@ -2,7 +2,7 @@ import Phaser, {Sprite} from 'phaser';
 
 export default class Entity extends Sprite {
   /**
-   * @param {Game} game
+   * @param {Phaser.Game} game
    * @param {number} x
    * @param {number} y
    * @param {string} spritesheet
