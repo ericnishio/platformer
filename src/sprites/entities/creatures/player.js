@@ -29,37 +29,10 @@ export default class Player extends Entity {
 
     game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON);
 
-    this.registerGamepad();
-
     this.anchor.setTo(0.5, 1);
     this.decreaseHeightBy(5);
 
     this.effects.burn = this.game.add.audio('combustion1', 1, false);
-  }
-
-  registerGamepad() {
-    this.pad1 = this.game.input.gamepad.pad1;
-    this.game.input.gamepad.start();
-  }
-
-  update() {
-    this.body.velocity.x = 0;
-
-    if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-      this.walkLeft();
-    }
-
-    if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) || this.pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-      this.walkRight();
-    }
-
-    if (this.canJump() && (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) || this.game.input.keyboard.isDown(Phaser.Keyboard.S) || this.pad1.isDown(Phaser.Gamepad.XBOX360_X))) {
-      this.jump();
-    }
-
-    if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.pad1.isDown(Phaser.Gamepad.XBOX360_Y)) {
-      this.fire();
-    }
   }
 
   die() {

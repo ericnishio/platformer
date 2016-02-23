@@ -29,6 +29,9 @@ export default class Stage extends GameState {
 
     this.initObstacles();
     this.initExplosions();
+
+    this.pad1 = this.game.input.gamepad.pad1;
+    this.game.input.gamepad.start();
   }
 
   /**
@@ -135,6 +138,26 @@ export default class Stage extends GameState {
     return this.victorious;
   }
 
+  handleInput() {
+    this.getPlayer().body.velocity.x = 0;
+
+    if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT) || this.pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+      this.getPlayer().walkLeft();
+    }
+
+    if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) || this.pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || this.pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+      this.getPlayer().walkRight();
+    }
+
+    if (this.getPlayer().canJump() && (this.game.input.keyboard.isDown(Phaser.Keyboard.UP) || this.game.input.keyboard.isDown(Phaser.Keyboard.S) || this.pad1.isDown(Phaser.Gamepad.XBOX360_X))) {
+      this.getPlayer().jump();
+    }
+
+    if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || this.game.input.keyboard.isDown(Phaser.Keyboard.D) || this.pad1.isDown(Phaser.Gamepad.XBOX360_Y)) {
+      this.getPlayer().fire();
+    }
+  }
+
   update() {
     this.game.physics.arcade.collide(this.getPlayer(), this.getPlatforms());
     this.game.physics.arcade.collide(this.getPlayer(), this.getHazard(), this.getPlayer().die, null, this.getPlayer());
@@ -170,5 +193,7 @@ export default class Stage extends GameState {
       explosion.reset(obstacle.body.x + 8, obstacle.body.y + 8); // TODO: Fix X and Y.
       explosion.play('explode', 30, false, true);
     });
+
+    this.handleInput();
   }
 }
