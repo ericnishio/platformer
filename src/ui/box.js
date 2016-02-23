@@ -1,7 +1,6 @@
 import {Point} from 'phaser';
 
-import {getGame} from 'core/game';
-import {TILE_SIZE} from 'core/game';
+import {TILE_SIZE, getGame} from 'core/game';
 
 /**
  * @param {number} widthInTiles
