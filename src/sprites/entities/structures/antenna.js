@@ -1,6 +1,16 @@
 import Structure from './structure';
+import {getGame} from 'core/game';
 
-export default class Antenna extends Structure {
+/**
+ * @param {number} x
+ * @param {number} y
+ * @return {Antenna}
+ */
+export default (x, y) => {
+  return new Antenna(getGame(), x, y);
+};
+
+export class Antenna extends Structure {
   /**
    * @param {Phaser.Game} game
    * @param {number} x

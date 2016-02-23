@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+import {getGame} from 'core/game';
 import Entity from 'sprites/entities/entity';
 import isAffectedByGravity from 'sprites/traits/is-affected-by-gravity';
 import needsOxygen from 'sprites/traits/needs-oxygen';
@@ -8,7 +9,16 @@ import canWalk from 'sprites/traits/can-walk';
 import canJump from 'sprites/traits/can-jump';
 import canWieldBlaster from 'sprites/traits/can-wield-blaster';
 
-export default class Player extends Entity {
+/**
+ * @param {number} x
+ * @param {number} y
+ * @return {Player}
+ */
+export default (x, y) => {
+  return new Player(getGame(), x, y);
+};
+
+export class Player extends Entity {
   /**
    * @param {Phaser.Game} game
    * @param {number} x

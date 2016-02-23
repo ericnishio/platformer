@@ -1,6 +1,16 @@
 import Decoration from './decoration';
+import {getGame} from 'core/game';
 
-export default class TwinklingStar extends Decoration {
+/**
+ * @param {number} x
+ * @param {number} y
+ * @return {TwinklingStar}
+ */
+export default (x, y) => {
+  return new TwinklingStar(getGame(), x, y);
+};
+
+export class TwinklingStar extends Decoration {
   /**
    * @param {Phaser.Game} game
    * @param {number} x

@@ -7,7 +7,7 @@ import {TILE_SIZE, getGame} from 'core/game';
  * @param {number} heightInTiles
  * @return {Phaser.Group}
  */
-export default function box(widthInTiles, heightInTiles) {
+export default (widthInTiles, heightInTiles) => {
   const spritesheet = 'menus-1x1-1';
   const game = getGame();
   const group = game.add.group();
@@ -53,4 +53,4 @@ export default function box(widthInTiles, heightInTiles) {
   );
 
   return group;
-}
+};

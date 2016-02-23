@@ -1,19 +1,19 @@
 import {Keyboard} from 'phaser';
 
 import {TILE_SIZE, getGame} from 'core/game';
-import box from 'ui/box';
+import Box from 'ui/box';
 
 /**
  * @param {string[]} messages
  * @return {Phaser.Group}
  */
-export default function speechBubble(messages) {
-  const container = box(15, 8);
+export default messages => {
+  const container = Box(15, 8);
 
   container.add(animateMessages(messages, container));
 
   return container;
-}
+};
 
 /**
  * @param {string[]} messages

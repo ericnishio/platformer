@@ -39,8 +39,8 @@ export default class Stage extends GameState {
    * @param {number} y
    */
   createPlayer(x, y) {
-    this.player = new Player(this.game, x, y);
-    this.oxygenMeter = new OxygenMeter(this.game, this.getPlayer());
+    this.player = Player(x, y);
+    this.oxygenMeter = OxygenMeter(this.getPlayer());
   }
 
   /**

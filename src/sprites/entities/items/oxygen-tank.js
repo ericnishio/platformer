@@ -1,7 +1,16 @@
 import Item from './item';
-import Player from 'sprites/entities/creatures/player';
+import {getGame} from 'core/game';
 
-export default class OxygenTank extends Item {
+/**
+ * @param {number} x
+ * @param {number} y
+ * @return {OxygenTank}
+ */
+export default (x, y) => {
+  return new OxygenTank(getGame(), x, y);
+};
+
+export class OxygenTank extends Item {
   /**
    * @param {Phaser.Game} game
    * @param {number} x
@@ -22,7 +31,7 @@ export default class OxygenTank extends Item {
   handleCollision(entity) {
     super.handleCollision(entity);
 
-    if (entity instanceof Player) {
+    if (entity.inventory) {
       this.kill();
       this.effects.pickup.play();
       entity.increaseOxygenBy(50);

@@ -1,7 +1,16 @@
 import Item from './item';
-import Player from 'sprites/entities/creatures/player';
+import {getGame} from 'core/game';
 
-export default class Blaster extends Item {
+/**
+ * @param {number} x
+ * @param {number} y
+ * @return {Blaster}
+ */
+export default (x, y) => {
+  return new Blaster(getGame(), x, y);
+};
+
+export class Blaster extends Item {
   /**
    * @param {Phaser.Game} game
    * @param {number} x
@@ -23,7 +32,7 @@ export default class Blaster extends Item {
   handleCollision(entity) {
     super.handleCollision(entity);
 
-    if (entity instanceof Player) {
+    if (entity.inventory) {
       this.effects.pickup.play();
       entity.addToInventory(this);
       this.kill();

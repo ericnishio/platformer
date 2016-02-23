@@ -1,6 +1,15 @@
 import {Sprite} from 'phaser';
 
-export default class OxygenMeter extends Sprite {
+import {getGame} from 'core/game';
+
+/**
+ * @param {Player} player
+ */
+export default player => {
+  return new OxygenMeter(getGame(), player);
+};
+
+export class OxygenMeter extends Sprite {
   /**
    * @param {Phaser.Game} game
    * @param {Player} player
