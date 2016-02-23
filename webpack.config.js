@@ -18,7 +18,6 @@ module.exports = {
       phaser: path.join(__dirname, 'lib/phaser'),
       lib: path.join(__dirname, 'lib'),
       assets: path.join(__dirname, 'assets'),
-      stores: path.join(__dirname, 'src/stores'),
       core: path.join(__dirname, 'src/core'),
       states: path.join(__dirname, 'src/states'),
       stages: path.join(__dirname, 'src/states/stages'),

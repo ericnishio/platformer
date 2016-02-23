@@ -8,16 +8,12 @@ import Stage1 from 'stages/1';
 export const TILE_SIZE = 16;
 export const PIXEL_SCALE = 2;
 
-let _store;
 let _game;
 
 /**
- * @param {Object} store
  * @return {Phaser.Game}
  */
-export default function createGame(store) {
-  _store = store;
-
+export default function createGame() {
   _game = new Game(
     427,
     240,
@@ -51,25 +47,4 @@ export function getGame() {
  */
 export function getTileCoordinate(tile) {
   return TILE_SIZE * tile;
-}
-
-/**
- * @return {Function}
- */
-export function dispatch() {
-  return getStore().dispatch;
-}
-
-/**
- * @return {Object}
- */
-export function getState() {
-  return getStore().getState();
-}
-
-/**
- * @return {Object}
- */
-function getStore() {
-  return _store;
 }
