@@ -173,20 +173,6 @@ export default class Player extends Entity {
     return this.body.onFloor() || this.body.touching.down;
   }
 
-  walkLeft() {
-    this.body.velocity.x = -(this.getSpeed());
-    this.faceLeft();
-    this.animations.play('walkLeft');
-    this.play('left');
-  }
-
-  walkRight() {
-    this.body.velocity.x = this.getSpeed();
-    this.faceRight();
-    this.animations.play('walkRight');
-    this.play('right');
-  }
-
   jump() {
     this.body.velocity.y = -(this.getSpeed() * 1.8);
 

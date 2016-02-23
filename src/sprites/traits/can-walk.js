@@ -9,6 +9,20 @@ export default sprite => {
     facingX: RIGHT,
     speed: 50,
 
+    walkLeft() {
+      this.body.velocity.x = -(this.getSpeed());
+      this.faceLeft();
+      this.animations.play('walkLeft');
+      this.play('left');
+    },
+
+    walkRight() {
+      this.body.velocity.x = this.getSpeed();
+      this.faceRight();
+      this.animations.play('walkRight');
+      this.play('right');
+    },
+
     /**
      * Sets the creature's speed.
      * @param {number} speed
