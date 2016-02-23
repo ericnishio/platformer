@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 import {TILE_SIZE} from 'core/game';
 import GameState from 'states/game-state';
 import Player from 'sprites/entities/creatures/player';
-import OxygenMeter from 'sprites/ui/oxygen-meter';
+import OxygenMeter from 'ui/oxygen-meter';
 
 export default class Stage extends GameState {
   /**
