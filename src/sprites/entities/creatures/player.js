@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
 import Entity from 'sprites/entities/entity';
+import needsOxygen from 'sprites/traits/needs-oxygen';
 import hasInventory from 'sprites/traits/has-inventory';
 import canWalk from 'sprites/traits/can-walk';
 import canJump from 'sprites/traits/can-jump';
@@ -18,6 +19,7 @@ export default class Player extends Entity {
 
     Object.assign(
       this,
+      needsOxygen(this),
       hasInventory(this),
       canWalk(this),
       canJump(this),
@@ -35,11 +37,6 @@ export default class Player extends Entity {
 
     this.effects.burn = this.game.add.audio('combustion1', 1, false);
     this.effects.shoot = this.game.add.audio('laser1', 1, false);
-
-    this.setMaxOxygen(100);
-    this.setOxygen(100);
-
-    this.oxygenTimer = this.game.time.events.repeat(Phaser.Timer.SECOND * 1, Infinity, this.consumeOxygen, this);
 
     this.initBullets();
   }
@@ -66,75 +63,6 @@ export default class Player extends Entity {
   registerGamepad() {
     this.pad1 = this.game.input.gamepad.pad1;
     this.game.input.gamepad.start();
-  }
-
-  startOxygenConsumption() {
-    this.oxygenTimer.timer.start();
-  }
-
-  stopOxygenConsumption() {
-    this.oxygenTimer.timer.stop();
-  }
-
-  consumeOxygen() {
-    if (this.alive) {
-      this.setOxygen(this.getOxygen() - 1);
-    }
-  }
-
-  /**
-   * @return {boolean}
-   */
-  hasOxygen() {
-    return this.getOxygen() > 0;
-  }
-
-  /**
-   * @param {number} oxygen
-   */
-  setOxygen(oxygen) {
-    const maxOxygen = this.getMaxOxygen();
-
-    if (oxygen <= maxOxygen) {
-      this.oxygen = oxygen;
-    } else {
-      this.oxygen = maxOxygen;
-    }
-  }
-
-  /**
-   * @param {number} increment
-   */
-  increaseOxygenBy(increment) {
-    this.setOxygen(this.getOxygen() + increment);
-  }
-
-  /**
-   * @return {number}
-   */
-  getOxygen() {
-    return this.oxygen;
-  }
-
-  /**
-   * @return {number}
-   */
-  getOxygenAsPercentage() {
-    return Math.ceil(this.getOxygen() / this.getMaxOxygen() * 100);
-  }
-
-  /**
-   * @param {number} maxOxygen
-   */
-  setMaxOxygen(maxOxygen) {
-    this.maxOxygen = maxOxygen;
-  }
-
-  /**
-   * @return {number}
-   */
-  getMaxOxygen() {
-    return this.maxOxygen;
   }
 
   update() {
