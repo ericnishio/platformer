@@ -1,5 +1,3 @@
-import Phaser from 'phaser';
-
 import {getTileCoordinate} from 'core/game';
 import Stage from './stage';
 import Antenna from 'sprites/entities/structures/antenna';
@@ -8,7 +6,6 @@ import OxygenTank from 'sprites/entities/items/oxygen-tank';
 import PowerCell from 'sprites/entities/items/power-cell';
 import Crate from 'sprites/entities/structures/crate';
 import TwinklingStar from 'sprites/decorations/twinkling-star';
-import speechBubble from 'ui/speech-bubble';
 
 export default class Stage1 extends Stage {
   create() {
@@ -25,22 +22,6 @@ export default class Stage1 extends Stage {
     this.createFromObjects('Stars', 26, TwinklingStar, this.getDecorations());
 
     this.antenna = new Antenna(this.game, getTileCoordinate(52), getTileCoordinate(0));
-
-    this.game.input.keyboard
-      .addKey(Phaser.Keyboard.ESC)
-      .onDown.add(this.testSpeechBubble, this);
-  }
-
-  testSpeechBubble() {
-    if (this.speechBubble) {
-      this.speechBubble.destroy();
-      delete this.speechBubble;
-    } else {
-      this.speechBubble = speechBubble([
-        'A long time ago',
-        'In a galaxy far,\nfar away.'
-      ]);
-    }
   }
 
   update() {
@@ -55,8 +36,5 @@ export default class Stage1 extends Stage {
         this.win();
       }
     }, null, this);
-  }
-
-  pauseUpdate() {
   }
 }
