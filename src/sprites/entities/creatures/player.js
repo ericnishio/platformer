@@ -19,9 +19,9 @@ export default class Player extends Entity {
 
     Object.assign(
       this,
-      needsOxygen(this),
+      needsOxygen(this, {oxygen: 100, maxOxygen: 100}),
       hasInventory(this),
-      canWalk(this),
+      canWalk(this, {speed: 80}),
       canJump(this),
       isAffectedByGravity(this)
     );
@@ -29,8 +29,6 @@ export default class Player extends Entity {
     game.camera.follow(this, Phaser.Camera.FOLLOW_LOCKON);
 
     this.registerGamepad();
-
-    this.setSpeed(80);
 
     this.anchor.setTo(0.5, 1);
     this.decreaseHeightBy(5);

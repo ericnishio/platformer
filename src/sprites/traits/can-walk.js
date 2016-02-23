@@ -2,12 +2,12 @@ import {LEFT, RIGHT} from 'phaser';
 
 /**
  * @param {Phaser.Sprite} sprite
+ * @param {Object} options
  * @return {Phaser.Sprite}
  */
-export default sprite => {
-  const trait = Object.assign({}, sprite, {
+export default (sprite, options = {speed: 50}) => {
+  const trait = Object.assign({}, sprite, options, {
     facingX: RIGHT,
-    speed: 50,
 
     walkLeft() {
       this.body.velocity.x = -(this.getSpeed());
