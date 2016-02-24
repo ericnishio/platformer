@@ -2,6 +2,18 @@ import {Tilemap} from 'phaser';
 
 import {TILE_SIZE, getTileCoordinate} from 'core/game';
 import Stage from './stage';
+import hasTilemap from 'states/traits/has-tilemap';
+import hasSky from 'states/traits/has-sky';
+import hasPlayer from 'states/traits/has-player';
+import hasNextStage from 'states/traits/has-next-stage';
+import hasDecorations from 'states/traits/has-decorations';
+import hasObstacles from 'states/traits/has-obstacles';
+import hasExplosions from 'states/traits/has-explosions';
+import hasPlatforms from 'states/traits/has-platforms';
+import hasHazard from 'states/traits/has-hazard';
+import hasItems from 'states/traits/has-items';
+import canCreateFromObjects from 'states/traits/can-create-from-objects';
+import canDie from 'states/traits/can-die';
 import Antenna from 'sprites/entities/structures/antenna';
 import Blaster from 'sprites/entities/items/blaster';
 import OxygenTank from 'sprites/entities/items/oxygen-tank';
@@ -32,9 +44,23 @@ export default class Stage1 extends Stage {
   }
 
   create() {
-    super.create();
+    Object.assign(this, hasTilemap(this, {tilemap: 'Stage1', tilesets: ['terrain-1x1-1']}));
 
-    this.createStage('Stage1', ['terrain-1x1-1']);
+    Object.assign(
+      this,
+      hasSky(this),
+      hasPlayer(this),
+      hasNextStage(this, {stageName: 'Stage1', stageClass: Stage1}),
+      hasDecorations(this),
+      hasObstacles(this),
+      hasExplosions(this),
+      hasPlatforms(this),
+      hasHazard(this),
+      hasItems(this),
+      canCreateFromObjects(this),
+      canDie(this)
+    );
+
     this.createPlayer(getTileCoordinate(3), getTileCoordinate(15));
 
     this.getItems().add(OxygenTank(getTileCoordinate(42), getTileCoordinate(18)));
