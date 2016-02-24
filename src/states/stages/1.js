@@ -45,16 +45,13 @@ export default class Stage1 extends GameState {
 
   create() {
     Object.assign(this, hasTilemap(this, {tilemap: 'Stage1', tilesets: ['terrain-1x1-1']}));
-    Object.assign(this, hasPlayer(this));
     Object.assign(this, hasSky(this));
     Object.assign(this, hasNextStage(this, {stageName: 'Stage1', stageClass: Stage1}));
     Object.assign(this, hasDecorations(this));
     Object.assign(this, hasExplosions(this));
     Object.assign(this, canCreateFromObjects(this));
     Object.assign(this, canDie(this));
-
-    this.createPlayer(getTileCoordinate(3), getTileCoordinate(15));
-
+    Object.assign(this, hasPlayer(this, {x: getTileCoordinate(3), y: getTileCoordinate(15)}));
     Object.assign(this, hasHazard(this));
     Object.assign(this, hasItems(this));
     Object.assign(this, hasPlatforms(this));

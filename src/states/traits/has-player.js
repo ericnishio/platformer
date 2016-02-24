@@ -3,7 +3,7 @@ import {Camera, Keyboard, Gamepad} from 'phaser';
 import OxygenMeter from 'ui/oxygen-meter';
 import Player from 'sprites/entities/creatures/player';
 
-export default state => {
+export default (state, options) => {
   const trait = Object.assign({}, state, {
     /**
      * @param {number} x
@@ -45,6 +45,10 @@ export default state => {
 
   trait.pad1 = state.game.input.gamepad.pad1;
   trait.game.input.gamepad.start();
+
+  if (options.x && options.y) {
+    trait.createPlayer(options.x, options.y);
+  }
 
   return trait;
 };
