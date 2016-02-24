@@ -10,7 +10,7 @@ export default sprite => {
      * @return {boolean}
      */
     canJump() {
-      return this.body.onFloor() || this.body.touching.down;
+      return sprite.body.onFloor() || sprite.body.touching.down;
     },
 
     jump() {

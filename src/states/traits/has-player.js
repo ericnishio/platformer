@@ -10,35 +10,35 @@ export default state => {
      * @param {number} y
      */
     createPlayer(x, y) {
-      this.player = Player(x, y);
-      this.oxygenMeter = OxygenMeter(this.getPlayer());
-      this.game.camera.follow(this.player, Camera.FOLLOW_LOCKON);
+      trait.player = Player(x, y);
+      trait.oxygenMeter = OxygenMeter(trait.getPlayer());
+      trait.game.camera.follow(trait.player, Camera.FOLLOW_LOCKON);
     },
 
     /**
      * @return {Player}
      */
     getPlayer() {
-      return this.player;
+      return trait.player;
     },
 
     handleInput() {
-      this.getPlayer().body.velocity.x = 0;
+      trait.getPlayer().body.velocity.x = 0;
 
-      if (this.game.input.keyboard.isDown(Keyboard.LEFT) || this.pad1.isDown(Gamepad.XBOX360_DPAD_LEFT) || this.pad1.axis(Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
-        this.getPlayer().walkLeft();
+      if (state.game.input.keyboard.isDown(Keyboard.LEFT) || state.pad1.isDown(Gamepad.XBOX360_DPAD_LEFT) || state.pad1.axis(Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+        trait.getPlayer().walkLeft();
       }
 
-      if (this.game.input.keyboard.isDown(Keyboard.RIGHT) || this.pad1.isDown(Gamepad.XBOX360_DPAD_RIGHT) || this.pad1.axis(Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
-        this.getPlayer().walkRight();
+      if (state.game.input.keyboard.isDown(Keyboard.RIGHT) || state.pad1.isDown(Gamepad.XBOX360_DPAD_RIGHT) || state.pad1.axis(Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+        trait.getPlayer().walkRight();
       }
 
-      if (this.getPlayer().canJump() && (this.game.input.keyboard.isDown(Keyboard.UP) || this.game.input.keyboard.isDown(Keyboard.S) || this.pad1.isDown(Gamepad.XBOX360_X))) {
-        this.getPlayer().jump();
+      if (trait.getPlayer().canJump() && (state.game.input.keyboard.isDown(Keyboard.UP) || state.game.input.keyboard.isDown(Keyboard.S) || state.pad1.isDown(Gamepad.XBOX360_X))) {
+        trait.getPlayer().jump();
       }
 
-      if (this.game.input.keyboard.isDown(Keyboard.SPACEBAR) || this.game.input.keyboard.isDown(Keyboard.D) || this.pad1.isDown(Gamepad.XBOX360_Y)) {
-        this.getPlayer().fire();
+      if (state.game.input.keyboard.isDown(Keyboard.SPACEBAR) || state.game.input.keyboard.isDown(Keyboard.D) || state.pad1.isDown(Gamepad.XBOX360_Y)) {
+        trait.getPlayer().fire();
       }
     }
   });

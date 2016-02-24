@@ -5,7 +5,7 @@ import {getGame} from 'core/game';
 export default state => {
   const game = getGame();
 
-  return Object.assign({}, state, {
+  const trait = Object.assign({}, state, {
     die() {
       state.getPlayer().die();
 
@@ -14,4 +14,18 @@ export default state => {
       });
     }
   });
+
+  trait.toUpdate = trait.toUpdate || [];
+
+  trait.toUpdate.push(
+    () => {
+      if (state.getPlayer().alive && !state.getPlayer().hasOxygen()) {
+        console.log('You ran out of oxygen.');
+
+        trait.die();
+      }
+    }
+  );
+
+  return trait;
 };

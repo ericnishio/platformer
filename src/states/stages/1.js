@@ -1,7 +1,7 @@
 import {Tilemap} from 'phaser';
 
 import {TILE_SIZE, getTileCoordinate} from 'core/game';
-import Stage from './stage';
+import GameState from 'states/game-state';
 import hasTilemap from 'states/traits/has-tilemap';
 import hasSky from 'states/traits/has-sky';
 import hasPlayer from 'states/traits/has-player';
@@ -21,7 +21,7 @@ import PowerCell from 'sprites/entities/items/power-cell';
 import {Crate} from 'sprites/entities/structures/crate';
 import {TwinklingStar} from 'sprites/decorations/twinkling-star';
 
-export default class Stage1 extends Stage {
+export default class Stage1 extends GameState {
   static toPreload(preloader) {
     preloader.load.tilemap('Stage1', require('assets/tilemaps/stage1.json'), null, Tilemap.TILED_JSON);
 
@@ -45,23 +45,20 @@ export default class Stage1 extends Stage {
 
   create() {
     Object.assign(this, hasTilemap(this, {tilemap: 'Stage1', tilesets: ['terrain-1x1-1']}));
-
-    Object.assign(
-      this,
-      hasSky(this),
-      hasPlayer(this),
-      hasNextStage(this, {stageName: 'Stage1', stageClass: Stage1}),
-      hasDecorations(this),
-      hasObstacles(this),
-      hasExplosions(this),
-      hasPlatforms(this),
-      hasHazard(this),
-      hasItems(this),
-      canCreateFromObjects(this),
-      canDie(this)
-    );
+    Object.assign(this, hasPlayer(this));
+    Object.assign(this, hasSky(this));
+    Object.assign(this, hasNextStage(this, {stageName: 'Stage1', stageClass: Stage1}));
+    Object.assign(this, hasDecorations(this));
+    Object.assign(this, hasExplosions(this));
+    Object.assign(this, canCreateFromObjects(this));
+    Object.assign(this, canDie(this));
 
     this.createPlayer(getTileCoordinate(3), getTileCoordinate(15));
+
+    Object.assign(this, hasHazard(this));
+    Object.assign(this, hasItems(this));
+    Object.assign(this, hasPlatforms(this));
+    Object.assign(this, hasObstacles(this));
 
     this.getItems().add(OxygenTank(getTileCoordinate(42), getTileCoordinate(18)));
     this.getItems().add(Blaster(getTileCoordinate(29), getTileCoordinate(18)));
@@ -74,7 +71,9 @@ export default class Stage1 extends Stage {
   }
 
   update() {
-    super.update();
+    this.toUpdate.forEach(func => func());
+
+    this.handleInput();
 
     this.game.physics.arcade.collide(this.antenna, this.getPlatforms());
 
