@@ -1,4 +1,4 @@
-import {getGame} from 'core/game';
+import {getGame, getTileCoordinate} from 'core/game';
 import Entity from 'sprites/entities/entity';
 import isAffectedByGravity from 'sprites/traits/is-affected-by-gravity';
 import needsOxygen from 'sprites/traits/needs-oxygen';
@@ -6,6 +6,7 @@ import hasInventory from 'sprites/traits/has-inventory';
 import canWalk from 'sprites/traits/can-walk';
 import canJump from 'sprites/traits/can-jump';
 import canWieldBlaster from 'sprites/traits/can-wield-blaster';
+import Blaster from 'sprites/entities/items/blaster';
 
 /**
  * @param {number} x
@@ -39,6 +40,18 @@ export class Player extends Entity {
     this.decreaseHeightBy(5);
 
     this.effects.burn = this.game.add.audio('combustion1', 1, false);
+
+    window.idkfa = () => {
+      const blaster = Blaster(this.x, this.y);
+      this.addToInventory(blaster);
+      blaster.kill();
+      console.log('Come get some!');
+    };
+
+    window.goto = (gotoX, gotoY) => {
+      this.x = getTileCoordinate(gotoX);
+      this.y = getTileCoordinate(gotoY);
+    };
   }
 
   die() {

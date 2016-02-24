@@ -65,6 +65,11 @@ export default class Stage1 extends GameState {
     this.createFromObjects('Stars', 26, TwinklingStar, this.getDecorations());
 
     this.antenna = Antenna(getTileCoordinate(52), getTileCoordinate(0));
+
+    window.idclip = () => {
+      this.getPlayer().x = getTileCoordinate(40);
+      this.getPlayer().y = getTileCoordinate(8);
+    };
   }
 
   update() {
