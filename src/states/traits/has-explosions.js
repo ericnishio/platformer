@@ -1,3 +1,7 @@
+/**
+ * @param {GameState} state
+ * @return {GameState}
+ */
 export default state => {
   delete state.explosions;
 

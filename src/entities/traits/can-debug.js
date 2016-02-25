@@ -1,6 +1,9 @@
 import {getTilePosition} from 'core/game';
 import Blaster from 'entities/actors/items/blaster';
 
+/**
+ * @param {Phaser.Sprite} sprite
+ */
 export default sprite => {
   window.IDKFA = () => {
     const blaster = Blaster(sprite.x, sprite.y);

@@ -2,6 +2,10 @@ import {Timer} from 'phaser';
 
 import {getGame} from 'core/game';
 
+/**
+ * @param {GameState} state
+ * @return {GameState}
+ */
 export default state => {
   const game = getGame();
 

@@ -2,6 +2,10 @@ import {Physics} from 'phaser';
 
 import {getGame} from 'core/game';
 
+/**
+ * @param {GameState} state
+ * @return {GameState}
+ */
 export default state => {
   delete state.obstacles;
 

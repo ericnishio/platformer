@@ -1,4 +1,8 @@
-export default (state) => {
+/**
+ * @param {GameState} state
+ * @return {GameState}
+ */
+export default state => {
   delete state.platforms;
 
   const trait = Object.assign({}, state, {

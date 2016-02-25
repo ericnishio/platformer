@@ -1,5 +1,10 @@
 import {TILE_SIZE, getGame} from 'core/game';
 
+/**
+ * @param {GameState} state
+ * @param {Object} options
+ * @return {GameState}
+ */
 export default (state, options) => {
   const game = getGame();
   const trait = Object.assign({}, state, {});

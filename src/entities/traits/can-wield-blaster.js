@@ -2,6 +2,10 @@ import {Physics} from 'phaser';
 
 import {TYPE_FIREARM} from 'entities/actors/items/item';
 
+/**
+ * @param {Phaser.Sprite} sprite
+ * @return {Phaser.Sprite}
+ */
 export default sprite => {
   const trait = Object.assign({}, sprite, {
     initBullets() {

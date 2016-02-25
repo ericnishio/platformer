@@ -2,6 +2,11 @@ import {Timer} from 'phaser';
 
 import StageClear from 'states/stage-clear';
 
+/**
+ * @param {GameState} state
+ * @param {Object} options
+ * @return {GameState}
+ */
 export default (state, options) => {
   const trait = Object.assign({}, state, {
     win() {

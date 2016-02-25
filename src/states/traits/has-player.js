@@ -3,7 +3,12 @@ import {Camera} from 'phaser';
 import OxygenMeter from 'ui/oxygen-meter';
 import Player from 'entities/actors/creatures/player';
 
-export default (state, options) => {
+/**
+ * @param {GameState} state
+ * @param {Object} [options]
+ * @return {GameState}
+ */
+export default (state, options = {}) => {
   const trait = Object.assign({}, state, {
     /**
      * @param {number} x
