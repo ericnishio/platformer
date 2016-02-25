@@ -28,12 +28,12 @@ export class PowerCell extends Item {
   /**
    * @inheritdoc
    */
-  handleCollision(entity) {
-    super.handleCollision(entity);
+  handleCollision(actor) {
+    super.handleCollision(actor);
 
-    if (entity.inventory) {
+    if (actor.inventory) {
       this.kill();
-      entity.addToInventory(this);
+      actor.addToInventory(this);
       this.effects.pickup.play();
     }
   }

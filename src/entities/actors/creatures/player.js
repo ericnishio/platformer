@@ -1,12 +1,12 @@
 import {getGame} from 'core/game';
-import Entity from 'sprites/entities/entity';
-import isAffectedByGravity from 'sprites/traits/is-affected-by-gravity';
-import needsOxygen from 'sprites/traits/needs-oxygen';
-import hasInventory from 'sprites/traits/has-inventory';
-import canWalk from 'sprites/traits/can-walk';
-import canJump from 'sprites/traits/can-jump';
-import canWieldBlaster from 'sprites/traits/can-wield-blaster';
-import canDebug from 'sprites/traits/can-debug';
+import Actor from 'entities/actors/actor';
+import isAffectedByGravity from 'entities/traits/is-affected-by-gravity';
+import needsOxygen from 'entities/traits/needs-oxygen';
+import hasInventory from 'entities/traits/has-inventory';
+import canWalk from 'entities/traits/can-walk';
+import canJump from 'entities/traits/can-jump';
+import canWieldBlaster from 'entities/traits/can-wield-blaster';
+import canDebug from 'entities/traits/can-debug';
 
 /**
  * @param {number} x
@@ -17,7 +17,7 @@ export default (x, y) => {
   return new Player(getGame(), x, y);
 };
 
-export class Player extends Entity {
+export class Player extends Actor {
   /**
    * @param {Phaser.Game} game
    * @param {number} x

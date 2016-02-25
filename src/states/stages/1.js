@@ -14,12 +14,12 @@ import hasHazard from 'states/traits/has-hazard';
 import hasItems from 'states/traits/has-items';
 import canCreateFromObjects from 'states/traits/can-create-from-objects';
 import canDie from 'states/traits/can-die';
-import Antenna from 'sprites/entities/structures/antenna';
-import Blaster from 'sprites/entities/items/blaster';
-import OxygenTank from 'sprites/entities/items/oxygen-tank';
-import PowerCell from 'sprites/entities/items/power-cell';
-import {Crate} from 'sprites/entities/structures/crate';
-import {TwinklingStar} from 'sprites/decorations/twinkling-star';
+import Antenna from 'entities/actors/structures/antenna';
+import Blaster from 'entities/actors/items/blaster';
+import OxygenTank from 'entities/actors/items/oxygen-tank';
+import PowerCell from 'entities/actors/items/power-cell';
+import {Crate} from 'entities/actors/structures/crate';
+import {TwinklingStar} from 'entities/decorations/twinkling-star';
 
 export default class Stage1 extends GameState {
   static toPreload(preloader) {

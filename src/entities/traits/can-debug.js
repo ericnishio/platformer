@@ -1,5 +1,5 @@
 import {getTilePosition} from 'core/game';
-import Blaster from 'sprites/entities/items/blaster';
+import Blaster from 'entities/actors/items/blaster';
 
 export default sprite => {
   window.IDKFA = () => {

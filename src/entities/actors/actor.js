@@ -1,6 +1,6 @@
 import Phaser, {Sprite} from 'phaser';
 
-export default class Entity extends Sprite {
+export default class Actor extends Sprite {
   /**
    * @param {Phaser.Game} game
    * @param {number} x
@@ -43,8 +43,8 @@ export default class Entity extends Sprite {
   }
 
   /**
-   * Handles a collision with another entity.
-   * @param {Entity} entity
+   * Handles a collision with another actor.
+   * @param {Actor} actor
    */
   handleCollision() {}
 }

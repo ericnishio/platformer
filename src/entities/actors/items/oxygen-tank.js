@@ -28,13 +28,13 @@ export class OxygenTank extends Item {
   /**
    * @inheritdoc
    */
-  handleCollision(entity) {
-    super.handleCollision(entity);
+  handleCollision(actor) {
+    super.handleCollision(actor);
 
-    if (entity.inventory) {
+    if (actor.inventory) {
       this.kill();
       this.effects.pickup.play();
-      entity.increaseOxygenBy(50);
+      actor.increaseOxygenBy(50);
     }
   }
 }

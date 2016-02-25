@@ -31,7 +31,7 @@ export class Crate extends Structure {
   /**
    * @inheritdoc
    */
-  handleCollision(entity) {
-    super.handleCollision(entity);
+  handleCollision(actor) {
+    super.handleCollision(actor);
   }
 }

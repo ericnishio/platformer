@@ -1,7 +1,7 @@
 import {Camera, Keyboard, Gamepad} from 'phaser';
 
 import OxygenMeter from 'ui/oxygen-meter';
-import Player from 'sprites/entities/creatures/player';
+import Player from 'entities/actors/creatures/player';
 
 export default (state, options) => {
   const trait = Object.assign({}, state, {

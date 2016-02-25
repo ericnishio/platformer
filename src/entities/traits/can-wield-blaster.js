@@ -1,6 +1,6 @@
 import {Physics} from 'phaser';
 
-import {TYPE_FIREARM} from 'sprites/entities/items/item';
+import {TYPE_FIREARM} from 'entities/actors/items/item';
 
 export default sprite => {
   const trait = Object.assign({}, sprite, {

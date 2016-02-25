@@ -1,6 +1,6 @@
-import Entity from 'sprites/entities/entity';
+import Actor from 'entities/actors/actor';
 
-export default class Structure extends Entity {
+export default class Structure extends Actor {
   /**
    * @param {Phaser.Game} game
    * @param {number} x

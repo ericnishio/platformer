@@ -22,12 +22,12 @@ export default state => {
     },
 
     /**
-     * @param {Object} entityClass
+     * @param {Object} actorClass
      * @param {number} x
      * @param {number} y
      */
-    addObstacle(entityClass, x, y) {
-      trait.obstacles.add(new entityClass(game, x, y));
+    addObstacle(actorClass, x, y) {
+      trait.obstacles.add(new actorClass(game, x, y));
     }
   });
 

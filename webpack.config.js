@@ -21,7 +21,7 @@ module.exports = {
       core: path.join(__dirname, 'src/core'),
       states: path.join(__dirname, 'src/states'),
       stages: path.join(__dirname, 'src/states/stages'),
-      sprites: path.join(__dirname, 'src/sprites'),
+      entities: path.join(__dirname, 'src/entities'),
       ui: path.join(__dirname, 'src/ui'),
       util: path.join(__dirname, 'src/util')
     },

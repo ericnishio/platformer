@@ -1,10 +1,10 @@
-import Entity from 'sprites/entities/entity';
+import Actor from 'entities/actors/actor';
 
 export const TYPE_POWERUP = 'POWERUP';
 export const TYPE_FIREARM = 'FIREARM';
 export const TYPE_MISSION_ITEM = 'MISSION_ITEM';
 
-export default class Item extends Entity {
+export default class Item extends Actor {
   /**
   * @param {Phaser.Game} game
   * @param {number} x
