@@ -5,6 +5,7 @@ import GameState from 'states/game-state';
 import hasTilemap from 'states/traits/has-tilemap';
 import hasSky from 'states/traits/has-sky';
 import hasPlayer from 'states/traits/has-player';
+import canHandleInput from 'states/traits/can-handle-input';
 import hasNextStage from 'states/traits/has-next-stage';
 import hasDecorations from 'states/traits/has-decorations';
 import hasObstacles from 'states/traits/has-obstacles';
@@ -52,6 +53,7 @@ export default class Stage1 extends GameState {
     Object.assign(this, canCreateFromObjects(this));
     Object.assign(this, canDie(this));
     Object.assign(this, hasPlayer(this, {x: getTilePosition(3), y: getTilePosition(15)}));
+    Object.assign(this, canHandleInput(this, {actor: this.getPlayer()}));
     Object.assign(this, hasHazard(this));
     Object.assign(this, hasItems(this));
     Object.assign(this, hasPlatforms(this));

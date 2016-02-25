@@ -14,15 +14,19 @@ export default sprite => {
     },
 
     jump() {
-      this.body.velocity.y = -(this.getSpeed() * 1.8);
-
-      if (this.isFacingLeft()) {
-        this.animations.play('jumpLeft');
-      } else {
-        this.animations.play('jumpRight');
+      if (!trait.canJump()) {
+        return;
       }
 
-      this.effects.step.play();
+      sprite.body.velocity.y = -(sprite.getSpeed() * 1.8);
+
+      if (sprite.isFacingLeft()) {
+        sprite.animations.play('jumpLeft');
+      } else {
+        sprite.animations.play('jumpRight');
+      }
+
+      sprite.effects.step.play();
     }
   });
 
