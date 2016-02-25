@@ -14,7 +14,7 @@ $ npm start
 
 URL: `http://localhost:8080`
 
-## Code linter
+## Code Linting
 
 ```
 $ npm run lint
