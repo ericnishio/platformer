@@ -1,4 +1,4 @@
-import {getTileCoordinate} from 'core/game';
+import {getTilePosition} from 'core/game';
 import Blaster from 'sprites/entities/items/blaster';
 
 export default sprite => {
@@ -13,7 +13,7 @@ export default sprite => {
    * @param {number} tileY
    */
   window.GOTO = (tileX, tileY) => {
-    sprite.x = getTileCoordinate(tileX);
-    sprite.y = getTileCoordinate(tileY);
+    sprite.x = getTilePosition(tileX);
+    sprite.y = getTilePosition(tileY);
   };
 };

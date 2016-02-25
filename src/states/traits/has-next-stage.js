@@ -12,8 +12,8 @@ export default (state, options) => {
 
         this.game.time.events.add(Timer.SECOND * 1.5, () => {
           this.game.state.start('StageClear', true, false, {
-            nextStageName: options.stageName,
-            nextStageClass: options.stageClass
+            id: options.id,
+            class: options.class
           });
         });
       }

@@ -1,6 +1,6 @@
 import {Tilemap} from 'phaser';
 
-import {TILE_SIZE, getTileCoordinate} from 'core/game';
+import {TILE_SIZE, getTilePosition} from 'core/game';
 import GameState from 'states/game-state';
 import hasTilemap from 'states/traits/has-tilemap';
 import hasSky from 'states/traits/has-sky';
@@ -46,25 +46,25 @@ export default class Stage1 extends GameState {
   create() {
     Object.assign(this, hasTilemap(this, {tilemap: 'Stage1', tilesets: ['terrain-1x1-1']}));
     Object.assign(this, hasSky(this));
-    Object.assign(this, hasNextStage(this, {stageName: 'Stage1', stageClass: Stage1}));
+    Object.assign(this, hasNextStage(this, {id: 'Stage1', class: Stage1}));
     Object.assign(this, hasDecorations(this));
     Object.assign(this, hasExplosions(this));
     Object.assign(this, canCreateFromObjects(this));
     Object.assign(this, canDie(this));
-    Object.assign(this, hasPlayer(this, {x: getTileCoordinate(3), y: getTileCoordinate(15)}));
+    Object.assign(this, hasPlayer(this, {x: getTilePosition(3), y: getTilePosition(15)}));
     Object.assign(this, hasHazard(this));
     Object.assign(this, hasItems(this));
     Object.assign(this, hasPlatforms(this));
     Object.assign(this, hasObstacles(this));
 
-    this.getItems().add(OxygenTank(getTileCoordinate(42), getTileCoordinate(18)));
-    this.getItems().add(Blaster(getTileCoordinate(29), getTileCoordinate(18)));
-    this.getItems().add(PowerCell(getTileCoordinate(40), getTileCoordinate(8)));
+    this.getItems().add(OxygenTank(getTilePosition(42), getTilePosition(18)));
+    this.getItems().add(Blaster(getTilePosition(29), getTilePosition(18)));
+    this.getItems().add(PowerCell(getTilePosition(40), getTilePosition(8)));
 
     this.createFromObjects('Crates', 2, Crate, this.getObstacles());
     this.createFromObjects('Stars', 26, TwinklingStar, this.getDecorations());
 
-    this.antenna = Antenna(getTileCoordinate(52), getTileCoordinate(0));
+    this.antenna = Antenna(getTilePosition(52), getTilePosition(0));
   }
 
   update() {

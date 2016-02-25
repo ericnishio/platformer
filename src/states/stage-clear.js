@@ -4,8 +4,8 @@ import {startStage} from 'core/game';
 
 export default class StageClear extends State {
   init(params) {
-    this.nextStageName = params.nextStageName;
-    this.nextStageClass = params.nextStageClass;
+    this.nextStageId = params.id;
+    this.nextStageClass = params.class;
   }
 
   create() {
@@ -22,7 +22,7 @@ export default class StageClear extends State {
     text.anchor.setTo(0.5, 0.5);
 
     this.game.time.events.add(Timer.SECOND * 3, () => {
-      startStage(this.nextStageName, this.nextStageClass);
+      startStage(this.nextStageId, this.nextStageClass);
     });
   }
 }

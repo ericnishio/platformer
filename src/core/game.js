@@ -35,17 +35,22 @@ export function getGame() {
 }
 
 /**
- * @param {string} stageName
+ * @param {string} id
  * @param {Stage} stageClass
  */
-export function startStage(stageName, stageClass) {
-  getGame().state.start('Preloader', true, false, {stageName, stageClass});
+export function startStage(stageId, stageClass) {
+  const params = {
+    id: stageId,
+    class: stageClass
+  };
+
+  getGame().state.start('Preloader', true, false, params);
 }
 
 /**
  * @param {number} tile
  * @return {number}
  */
-export function getTileCoordinate(tile) {
+export function getTilePosition(tile) {
   return TILE_SIZE * tile;
 }
