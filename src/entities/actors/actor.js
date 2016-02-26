@@ -1,4 +1,4 @@
-import Phaser, {Sprite} from 'phaser';
+import {Sprite, Physics} from 'phaser';
 
 export default class Actor extends Sprite {
   /**
@@ -15,7 +15,7 @@ export default class Actor extends Sprite {
     this.smoothed = false;
     this.anchor.setTo(0.5, 1);
 
-    game.physics.enable(this, Phaser.Physics.ARCADE);
+    game.physics.enable(this, Physics.ARCADE);
     game.add.existing(this);
   }
 

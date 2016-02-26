@@ -1,4 +1,4 @@
-import Phaser, {Game} from 'phaser';
+import {AUTO, Game} from 'phaser';
 
 import Boot from 'states/boot';
 
@@ -14,7 +14,7 @@ export default function createGame() {
   _game = new Game(
     400,
     225,
-    Phaser.AUTO,
+    AUTO,
     'phaser',
     null,
     false,
