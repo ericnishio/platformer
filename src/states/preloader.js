@@ -1,7 +1,7 @@
 import {Easing} from 'phaser';
 
 import GameState from 'states/game-state';
-import Stage1 from 'states/stages/1';
+import Stage1 from 'states/stages/stage-1';
 import {TILE_SIZE} from 'core/game';
 
 export default class Preloader extends GameState {

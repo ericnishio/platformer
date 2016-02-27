@@ -22,9 +22,9 @@ import PowerCell from 'entities/actors/items/power-cell';
 import {Crate} from 'entities/actors/structures/crate';
 import {TwinklingStar} from 'entities/decorations/twinkling-star';
 
-export default class Stage1 extends GameState {
+export default class TestStage extends GameState {
   static toPreload(preloader) {
-    preloader.load.tilemap('Stage1', require('assets/tilemaps/stage1.json'), null, Tilemap.TILED_JSON);
+    preloader.load.tilemap('TestStage', require('assets/tilemaps/test-stage.json'), null, Tilemap.TILED_JSON);
 
     preloader.load.spritesheet('terrain-1x1-1', require('assets/spritesheets/terrain-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('structures-2x2-1', require('assets/spritesheets/structures-2x2-1.png'), TILE_SIZE * 2, TILE_SIZE * 2);
@@ -45,9 +45,9 @@ export default class Stage1 extends GameState {
   }
 
   create() {
-    Object.assign(this, hasTilemap(this, {tilemap: 'Stage1', tilesets: ['terrain-1x1-1']}));
+    Object.assign(this, hasTilemap(this, {tilemap: 'TestStage', tilesets: ['terrain-1x1-1']}));
     Object.assign(this, hasSky(this));
-    Object.assign(this, hasNextStage(this, {id: 'Stage1', class: Stage1}));
+    Object.assign(this, hasNextStage(this, {id: 'TestStage', class: TestStage}));
     Object.assign(this, hasDecorations(this));
     Object.assign(this, hasExplosions(this));
     Object.assign(this, canCreateFromObjects(this));

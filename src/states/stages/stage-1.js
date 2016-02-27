@@ -15,7 +15,7 @@ import canDie from 'states/traits/can-die';
 
 export default class Stage1 extends GameState {
   static toPreload(preloader) {
-    preloader.load.tilemap('Stage2', require('assets/tilemaps/stage2.json'), null, Tilemap.TILED_JSON);
+    preloader.load.tilemap('Stage1', require('assets/tilemaps/stage-1.json'), null, Tilemap.TILED_JSON);
 
     preloader.load.spritesheet('interior-1x1-1', require('assets/spritesheets/interior-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('creatures-1x2-1', require('assets/spritesheets/creatures-1x2-1.png'), TILE_SIZE, TILE_SIZE * 2);
@@ -26,7 +26,7 @@ export default class Stage1 extends GameState {
   }
 
   create() {
-    Object.assign(this, hasTilemap(this, {tilemap: 'Stage2', tilesets: ['interior-1x1-1']}));
+    Object.assign(this, hasTilemap(this, {tilemap: 'Stage1', tilesets: ['interior-1x1-1']}));
     Object.assign(this, hasSky(this));
     Object.assign(this, hasNextStage(this, {id: 'Stage1', class: Stage1}));
     Object.assign(this, canCreateFromObjects(this));
