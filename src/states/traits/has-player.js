@@ -30,6 +30,11 @@ export default (state, options = {}) => {
 
   if (options.x && options.y) {
     trait.createPlayer(options.x, options.y);
+
+    if (options.facing) {
+      trait.player.facingX = options.facing;
+      trait.player.walkLeft();
+    }
   }
 
   return trait;
