@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="15" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="interior-1x1-1" tilewidth="16" tileheight="16">
-  <image source="../spritesheets/interior-1x1-1.png" width="160" height="240"/>
+  <image source="../spritesheets/interior-1x1-1.png" width="128" height="96"/>
  </tileset>
  <layer name="Sky" width="25" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFQwEwkoHJsSOVREyOHV50sAOm1wyIzYHYAogtaWSHAxA7ArETEDtT2Q56xDmt7RgFAwMAyGURvQ==
+   eJxjYBgFQwEwkoHJsUOSSLNh6garP2BYCojlgFgBiBVpZIc0EMsCsRIQK9PIDnqEFa3sGAUDAwBU8AF6
   </data>
  </layer>
  <layer name="Platforms" width="25" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFowACmoF4EomYHDtoDehlhwsQu9LQjl4g7oPiQCAOguJgIA5FkkPGpIJoMvAoGBoAAJ2WFBk=
+   eJxjYBgFQwGIkYFJBXwkqhca4XaoALEqDe3gB2JOErAgGXYwkYFHwdAAADRYAoU=
   </data>
  </layer>
 </map>
