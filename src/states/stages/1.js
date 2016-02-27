@@ -66,6 +66,8 @@ export default class Stage1 extends GameState {
     this.createFromObjects('Crates', 2, Crate, this.getObstacles());
     this.createFromObjects('Stars', 26, TwinklingStar, this.getDecorations());
 
+    this.getPlayer().startOxygenConsumption();
+
     this.antenna = Antenna(getTilePosition(52), getTilePosition(0));
   }
 

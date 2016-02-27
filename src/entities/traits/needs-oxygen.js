@@ -9,12 +9,14 @@ import {getGame} from 'core/game';
  */
 export default (sprite, options = {oxygen: 100, maxOxygen: 100}) => {
   const trait = Object.assign({}, sprite, options, {
+    oxygenTimer: getGame().time.create(),
+
     startOxygenConsumption() {
-      trait.oxygenTimer.timer.start();
+      trait.oxygenTimer.start();
     },
 
     stopOxygenConsumption() {
-      trait.oxygenTimer.timer.stop();
+      trait.oxygenTimer.stop();
     },
 
     consumeOxygen() {
@@ -79,7 +81,7 @@ export default (sprite, options = {oxygen: 100, maxOxygen: 100}) => {
     }
   });
 
-  trait.oxygenTimer = getGame().time.events.repeat(
+  trait.oxygenTimer.repeat(
     Timer.SECOND * 1,
     Infinity,
     trait.consumeOxygen,
