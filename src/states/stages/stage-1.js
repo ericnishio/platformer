@@ -31,7 +31,7 @@ export default class Stage1 extends GameState {
     Object.assign(this, hasNextStage(this, {id: 'Stage1', class: Stage1}));
     Object.assign(this, canCreateFromObjects(this));
     Object.assign(this, canDie(this));
-    Object.assign(this, hasPlayer(this, {x: getTilePosition(2), y: getTilePosition(9)}));
+    Object.assign(this, hasPlayer(this, {x: getTilePosition(10), y: getTilePosition(9)}));
     Object.assign(this, canHandleInput(this, {actor: this.getPlayer()}));
     Object.assign(this, hasItems(this));
     Object.assign(this, hasPlatforms(this));

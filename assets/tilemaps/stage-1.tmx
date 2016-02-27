@@ -5,12 +5,12 @@
  </tileset>
  <layer name="Sky" width="25" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgwkw0gBjsyOVipgedqBjdDvMgNgciC2A2JLKdnhB+Q5A7AjETkDsDBXzwYLJsYMacUwozmmdrkbB4AIApu0hIA==
+   eJxjYBgFQwEwkoHJsSOVREyOHV50sAOm1wyIzYHYAogtaWSHAxA7ArETEDtT2Q56xDmt7RgFAwMAyGURvQ==
   </data>
  </layer>
  <layer name="Platforms" width="25" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIw00A/EkGuJWqB20BMPJjl4g7oPiQCAOguJgIA5FkkPH6GpxqesH4mg64FEwuAAAu84l5w==
+   eJxjYBgFowACmoF4EomYHDtoDehlhwsQu9LQjl4g7oPiQCAOguJgIA5FkkPGpIJoMvAoGBoAAJ2WFBk=
   </data>
  </layer>
 </map>
