@@ -33,18 +33,23 @@ export default class Stage1 extends GameState {
     Object.assign(this, hasNextStage(this, {id: 'Stage1', class: Stage1}));
     Object.assign(this, canCreateFromObjects(this));
     Object.assign(this, canDie(this));
+
+    this.terminal = Terminal(getTilePosition(10), getTilePosition(8));
+
     Object.assign(this, hasPlayer(this, {x: getTilePosition(15), y: getTilePosition(9), facing: LEFT}));
     Object.assign(this, canHandleInput(this, {actor: this.getPlayer()}));
     Object.assign(this, hasItems(this));
     Object.assign(this, hasPlatforms(this));
     Object.assign(this, hasObstacles(this));
-
-    this.terminal = Terminal(getTilePosition(10), getTilePosition(8));
   }
 
   update() {
     this.toUpdate.forEach(func => func());
 
     this.handleInput();
+
+    this.game.physics.arcade.overlap(this.player, this.terminal, () => {
+      console.log('overlap');
+    });
   }
 }
