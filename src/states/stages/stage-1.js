@@ -23,6 +23,7 @@ export default class Stage1 extends GameState {
     preloader.load.spritesheet('weapons-1x1-1', require('assets/spritesheets/weapons-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('oxygen-meter', require('assets/spritesheets/oxygen-meter.png'), TILE_SIZE * 7, TILE_SIZE);
     preloader.load.spritesheet('terminal-facing-right', require('assets/spritesheets/animations/terminal-facing-right.png'), TILE_SIZE, TILE_SIZE, 3);
+    preloader.load.spritesheet('menus-1x1-1', require('assets/spritesheets/menus-1x1-1.png'), TILE_SIZE, TILE_SIZE);
 
     preloader.load.audio('step', require('assets/audio/effects/step.ogg'));
   }
@@ -48,8 +49,6 @@ export default class Stage1 extends GameState {
 
     this.handleInput();
 
-    this.game.physics.arcade.overlap(this.player, this.terminal, () => {
-      console.log('overlap');
-    });
+    this.game.physics.arcade.overlap(this.player, this.terminal, () => this.terminal.interact());
   }
 }
