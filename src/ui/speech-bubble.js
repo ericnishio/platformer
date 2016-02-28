@@ -5,12 +5,13 @@ import Box from 'ui/box';
 
 /**
  * @param {string[]} messages
+ * @param {function} [callback]
  * @return {Phaser.Group}
  */
-export default messages => {
+export default (messages, callback = () => {}) => {
   const container = Box(15, 8);
 
-  container.add(animateMessages(messages, container));
+  container.add(animateMessages(messages, container, callback));
 
   return container;
 };
@@ -18,9 +19,10 @@ export default messages => {
 /**
  * @param {string[]} messages
  * @param {Phaser.Group} container
+ * @param {function} callback
  * @return {Phaser.BitmapText}
  */
-function animateMessages(messages, container) {
+function animateMessages(messages, container, callback) {
   const game = getGame();
 
   let currentMessageIndex = 0;
@@ -37,16 +39,22 @@ function animateMessages(messages, container) {
   function animateMessage(message) {
     const characters = message.split('');
     const charactersToRender = [];
+    const repeat = game.time.events.repeat(120, message.length, updateText, this);
 
     let currentCharacterIndex = 0;
-
-    game.time.events.repeat(120, message.length, updateText, this);
 
     currentMessageIndex += 1;
 
     function updateText() {
       const timer = game.time.create(false);
       const character = characters[currentCharacterIndex];
+
+      game.input.keyboard
+        .addKey(Keyboard.ENTER)
+        .onDown.add(() => {
+          repeat.delay = 0;
+          game.input.keyboard.removeKey(Keyboard.ENTER);
+        }, this);
 
       currentCharacterIndex += 1;
 
@@ -61,6 +69,8 @@ function animateMessages(messages, container) {
             container.destroy();
             game.input.keyboard.removeKey(Keyboard.ENTER);
           }, this);
+
+        callback();
       }
 
       if (charactersToRender.length === characters.length && currentMessageIndex < messages.length) {
@@ -81,6 +91,8 @@ function animateMessages(messages, container) {
             timer.destroy();
           }
         }, this);
+
+        bitmapText.text = bitmapText.text + '\n\n(...)';
 
         timer.start();
       }
