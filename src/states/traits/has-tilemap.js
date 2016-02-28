@@ -1,4 +1,4 @@
-import {TILE_SIZE, getGame} from 'core/game';
+import {TILE_SIZE} from 'core/game';
 
 /**
  * @param {GameState} state
@@ -6,11 +6,10 @@ import {TILE_SIZE, getGame} from 'core/game';
  * @return {GameState}
  */
 export default (state, options) => {
-  const game = getGame();
-  const trait = Object.assign({}, state, {});
+  const trait = {};
   const tilesets = options.tilesets || [];
 
-  trait.stage = game.add.tilemap(options.tilemap, TILE_SIZE, TILE_SIZE);
+  trait.stage = state.game.add.tilemap(options.tilemap, TILE_SIZE, TILE_SIZE);
 
   tilesets.forEach(tileset => {
     trait.stage.addTilesetImage(tileset);

@@ -6,62 +6,62 @@ import {LEFT, RIGHT} from 'phaser';
  * @return {Phaser.Sprite}
  */
 export default (sprite, options = {speed: 50}) => {
-  const trait = Object.assign({}, sprite, options, {
+  const trait = Object.assign({}, options, {
     facingX: RIGHT,
 
     walkLeft() {
-      this.body.velocity.x = -(this.getSpeed());
-      this.faceLeft();
-      this.animations.play('walkLeft');
-      this.play('left');
+      sprite.body.velocity.x = -(trait.getSpeed());
+      trait.faceLeft();
+      sprite.animations.play('walkLeft');
+      sprite.play('left');
     },
 
     walkRight() {
-      this.body.velocity.x = this.getSpeed();
-      this.faceRight();
-      this.animations.play('walkRight');
-      this.play('right');
+      sprite.body.velocity.x = trait.getSpeed();
+      trait.faceRight();
+      sprite.animations.play('walkRight');
+      sprite.play('right');
     },
 
     /**
      * @param {number} speed
      */
     setSpeed(speed) {
-      this.speed = speed;
+      trait.speed = speed;
     },
 
     /**
      * @return {number}
      */
     getSpeed() {
-      return this.speed;
+      return trait.speed;
     },
 
     faceRight() {
-      this.facingX = RIGHT;
+      trait.facingX = RIGHT;
     },
 
     faceLeft() {
-      this.facingX = LEFT;
+      trait.facingX = LEFT;
     },
 
     /**
      * @return {boolean}
      */
     isFacingRight() {
-      return this.facingX === RIGHT;
+      return trait.facingX === RIGHT;
     },
 
     /**
      * @return {boolean}
      */
     isFacingLeft() {
-      return this.facingX === LEFT;
+      return trait.facingX === LEFT;
     }
   });
 
-  trait.animations.add('walkRight', [1, 2, 0], 5, false);
-  trait.animations.add('walkLeft', [9, 10, 8], 5, false);
+  sprite.animations.add('walkRight', [1, 2, 0], 5, false);
+  sprite.animations.add('walkLeft', [9, 10, 8], 5, false);
 
   return trait;
 };

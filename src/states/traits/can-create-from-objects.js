@@ -3,12 +3,12 @@
  * @return {GameState}
  */
 export default state => {
-  return Object.assign({}, state, {
+  return {
     /**
      * Creates objects from a tilemap's object layer.
      */
     createFromObjects(layerName, gid, spriteClass, group) {
-      this.stage.createFromObjects(layerName, gid, null, null, true, false, group, spriteClass, true);
+      state.stage.createFromObjects(layerName, gid, null, null, true, false, group, spriteClass, true);
     }
-  });
+  };
 };

@@ -5,7 +5,7 @@
 export default state => {
   delete state.explosions;
 
-  const trait = Object.assign({}, state, {
+  const trait = {
     initExplosions() {
       state.explosions = state.game.add.group();
       state.explosions.createMultiple(10, 'effects-1x1-1');
@@ -15,7 +15,7 @@ export default state => {
         explosion.animations.add('explode', [4, 3, 2, 4, 3, 3, 2, 2, 0], 4, false);
       }, state);
     }
-  });
+  };
 
   trait.initExplosions();
 

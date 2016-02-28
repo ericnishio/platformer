@@ -5,7 +5,7 @@ import {getGame} from 'core/game';
  * @return {Phaser.Sprite}
  */
 export default sprite => {
-  const trait = Object.assign({}, sprite, {
+  const trait = {
     /**
      * @return {boolean}
      */
@@ -28,12 +28,12 @@ export default sprite => {
 
       sprite.effects.step.play();
     }
-  });
+  };
 
-  trait.effects.step = getGame().add.audio('step', 1, false);
+  sprite.effects.step = getGame().add.audio('step', 1, false);
 
-  trait.animations.add('jumpLeft', [8], 5, false); // TODO: Replace animation.
-  trait.animations.add('jumpRight', [0], 5, false); // TODO: Replace animation.
+  sprite.animations.add('jumpLeft', [8], 5, false); // TODO: Replace animation.
+  sprite.animations.add('jumpRight', [0], 5, false); // TODO: Replace animation.
 
   return trait;
 };

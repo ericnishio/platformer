@@ -5,22 +5,22 @@
 export default state => {
   delete state.hazard;
 
-  const trait = Object.assign({}, state, {
+  const trait = {
     hazard: state.stage.createLayer('Hazard'),
 
     /**
      * @return {Phaser.TilemapLayer}
      */
     getHazard() {
-      return this.hazard;
+      return trait.hazard;
     }
-  });
+  };
 
-  trait.stage.setCollisionByExclusion([], true, 'Hazard');
+  state.stage.setCollisionByExclusion([], true, 'Hazard');
 
-  trait.toUpdate = trait.toUpdate || [];
+  state.toUpdate = state.toUpdate || [];
 
-  trait.toUpdate.push(
+  state.toUpdate.push(
     state.game.physics.arcade.collide.bind(
       state.game.physics.arcade,
       state.getPlayer(),

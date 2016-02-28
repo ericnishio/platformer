@@ -9,7 +9,7 @@ import {getGame} from 'core/game';
 export default state => {
   const game = getGame();
 
-  const trait = Object.assign({}, state, {
+  const trait = {
     die() {
       state.getPlayer().die();
 
@@ -17,11 +17,11 @@ export default state => {
         game.state.restart();
       });
     }
-  });
+  };
 
-  trait.toUpdate = trait.toUpdate || [];
+  state.toUpdate = state.toUpdate || [];
 
-  trait.toUpdate.push(
+  state.toUpdate.push(
     () => {
       if (state.getPlayer().alive && !state.getPlayer().hasOxygen()) {
         console.log('You ran out of oxygen.');

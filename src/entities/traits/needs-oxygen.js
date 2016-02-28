@@ -8,7 +8,7 @@ import {getGame} from 'core/game';
  * @return {Phaser.Sprite}
  */
 export default (sprite, options = {oxygen: 100, maxOxygen: 100}) => {
-  const trait = Object.assign({}, sprite, options, {
+  const trait = Object.assign({}, options, {
     oxygenTimer: getGame().time.create(),
 
     startOxygenConsumption() {

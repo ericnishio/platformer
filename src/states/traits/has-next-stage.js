@@ -8,15 +8,15 @@ import StageClear from 'states/stage-clear';
  * @return {GameState}
  */
 export default (state, options) => {
-  const trait = Object.assign({}, state, {
+  const trait = {
     win() {
-      if (!this.isVictorious()) {
-        this.victorious = true;
+      if (!trait.isVictorious()) {
+        trait.victorious = true;
 
         console.log('You beat the stage.');
 
-        this.game.time.events.add(Timer.SECOND * 1.5, () => {
-          this.game.state.start('StageClear', true, false, {
+        state.game.time.events.add(Timer.SECOND * 1.5, () => {
+          state.game.state.start('StageClear', true, false, {
             id: options.id,
             class: options.class
           });
@@ -29,9 +29,9 @@ export default (state, options) => {
      * @return {boolean}
      */
     isVictorious() {
-      return this.victorious;
+      return trait.victorious;
     }
-  });
+  };
 
   state.game.state.add('StageClear', StageClear, false);
 

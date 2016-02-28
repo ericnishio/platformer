@@ -5,7 +5,7 @@
 export default state => {
   delete state.items;
 
-  const trait = Object.assign({}, state, {
+  const trait = {
     items: state.game.add.group(),
 
     /**
@@ -14,11 +14,11 @@ export default state => {
     getItems() {
       return trait.items;
     }
-  });
+  };
 
-  trait.toUpdate = trait.toUpdate || [];
+  state.toUpdate = state.toUpdate || [];
 
-  trait.toUpdate.push(
+  state.toUpdate.push(
     () => {
       trait.getItems().forEachAlive(item => {
         state.game.physics.arcade.collide(item, state.getPlatforms());

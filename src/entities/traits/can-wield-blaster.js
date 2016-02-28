@@ -7,7 +7,7 @@ import {TYPE_FIREARM} from 'entities/actors/items/item';
  * @return {Phaser.Sprite}
  */
 export default sprite => {
-  const trait = Object.assign({}, sprite, {
+  const trait = {
     initBullets() {
       trait.bullets = sprite.game.add.group();
       trait.bullets.enableBody = true;
@@ -68,9 +68,9 @@ export default sprite => {
     getBulletVelocity(speed) {
       return sprite.isFacingRight() ? speed : -speed;
     }
-  });
+  };
 
-  trait.effects.shoot = sprite.game.add.audio('laser1', 1, false);
+  sprite.effects.shoot = sprite.game.add.audio('laser1', 1, false);
 
   trait.initBullets();
 

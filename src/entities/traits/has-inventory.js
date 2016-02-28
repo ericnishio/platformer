@@ -1,9 +1,8 @@
 /**
- * @param {Phaser.Sprite} sprite
- * @return {Phaser.Sprite}
+ * @return {Object}
  */
-export default sprite => {
-  return Object.assign({}, sprite, {
+export default () => {
+  return {
     inventory: [],
 
     /**
@@ -78,5 +77,5 @@ export default sprite => {
     canAddToInventory(item) {
       return this.getItemCountInInventory(item) < item.getMaxInInventory();
     }
-  });
+  };
 };

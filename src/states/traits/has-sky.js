@@ -5,9 +5,9 @@
 export default state => {
   delete state.sky;
 
-  const trait = Object.assign({}, state, {
+  const trait = {
     sky: state.stage.createLayer('Sky')
-  });
+  };
 
   trait.sky.resizeWorld();
 

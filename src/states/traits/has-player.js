@@ -9,7 +9,7 @@ import Player from 'entities/actors/creatures/player';
  * @return {GameState}
  */
 export default (state, options = {}) => {
-  const trait = Object.assign({}, state, {
+  const trait = {
     /**
      * @param {number} x
      * @param {number} y
@@ -17,7 +17,7 @@ export default (state, options = {}) => {
     createPlayer(x, y) {
       trait.player = Player(x, y);
       trait.oxygenMeter = OxygenMeter(trait.getPlayer());
-      trait.game.camera.follow(trait.player, Camera.FOLLOW_LOCKON);
+      state.game.camera.follow(trait.player, Camera.FOLLOW_LOCKON);
     },
 
     /**
@@ -26,7 +26,7 @@ export default (state, options = {}) => {
     getPlayer() {
       return trait.player;
     }
-  });
+  };
 
   if (options.x && options.y) {
     trait.createPlayer(options.x, options.y);

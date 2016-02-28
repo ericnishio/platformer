@@ -8,7 +8,7 @@ import {Keyboard, Gamepad} from 'phaser';
 export default (state, options) => {
   const actor = options.actor;
 
-  const trait = Object.assign({}, state, {
+  const trait = {
     handleInput() {
       actor.body.velocity.x = 0;
 
@@ -60,10 +60,10 @@ export default (state, options) => {
         actor.fire();
       }
     }
-  });
+  };
 
   trait.pad1 = state.game.input.gamepad.pad1;
-  trait.game.input.gamepad.start();
+  state.game.input.gamepad.start();
 
   return trait;
 };

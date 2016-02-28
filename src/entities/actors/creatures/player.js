@@ -28,7 +28,7 @@ export class Player extends Actor {
 
     Object.assign(this, isAffectedByGravity(this));
     Object.assign(this, needsOxygen(this, {oxygen: 100, maxOxygen: 100}));
-    Object.assign(this, hasInventory(this));
+    Object.assign(this, hasInventory());
     Object.assign(this, canWalk(this, {speed: 80}));
     Object.assign(this, canJump(this));
     Object.assign(this, canWieldBlaster(this));

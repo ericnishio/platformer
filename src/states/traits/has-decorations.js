@@ -7,7 +7,7 @@ import {getGame} from 'core/game';
 export default state => {
   delete state.decorations;
 
-  const trait = Object.assign({}, state, {
+  const trait = {
     decorations: getGame().add.group(),
 
     /**
@@ -16,7 +16,7 @@ export default state => {
     getDecorations() {
       return trait.decorations;
     }
-  });
+  };
 
   return trait;
 };

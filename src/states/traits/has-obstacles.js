@@ -11,7 +11,7 @@ export default state => {
 
   const game = getGame();
 
-  const trait = Object.assign({}, state, {
+  const trait = {
     initObstacles() {
       trait.obstacles = game.add.group();
       trait.obstacles.enableBody = true;
@@ -33,13 +33,13 @@ export default state => {
     addObstacle(actorClass, x, y) {
       trait.obstacles.add(new actorClass(game, x, y));
     }
-  });
+  };
 
   trait.initObstacles();
 
-  trait.toUpdate = trait.toUpdate || [];
+  state.toUpdate = state.toUpdate || [];
 
-  trait.toUpdate.push(
+  state.toUpdate.push(
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, trait.getObstacles(), state.getItems()),
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, trait.getObstacles(), state.getPlayer()),
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, trait.getObstacles(), state.getPlatforms()),
