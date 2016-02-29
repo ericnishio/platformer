@@ -33,9 +33,7 @@ export default sprite => {
 
   sprite.addChild(trait.questionMark);
 
-  sprite.toUpdate = sprite.toUpdate || [];
-
-  sprite.toUpdate.push(
+  sprite.addToUpdate(
     () => {
       if (!trait.lastInteraction || sprite.game.time.now > trait.lastInteraction) {
         trait.questionMark.visible = false;

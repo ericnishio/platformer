@@ -19,9 +19,7 @@ export default state => {
     }
   };
 
-  state.toUpdate = state.toUpdate || [];
-
-  state.toUpdate.push(
+  state.addToUpdate(
     () => {
       if (state.getPlayer().alive && !state.getPlayer().hasOxygen()) {
         console.log('You ran out of oxygen.');

@@ -37,9 +37,7 @@ export default state => {
 
   trait.initObstacles();
 
-  state.toUpdate = state.toUpdate || [];
-
-  state.toUpdate.push(
+  state.addToUpdate(
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, trait.getObstacles(), state.getItems()),
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, trait.getObstacles(), state.getPlayer()),
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, trait.getObstacles(), state.getPlatforms()),

@@ -1,5 +1,7 @@
 import {Sprite, Physics} from 'phaser';
 
+import toUpdate from 'core/to-update';
+
 export default class Actor extends Sprite {
   /**
    * @param {Phaser.Game} game
@@ -10,6 +12,8 @@ export default class Actor extends Sprite {
    */
   constructor(game, x, y, spritesheet, tileIndex) {
     super(game, x, y, spritesheet, tileIndex);
+
+    Object.assign(this, toUpdate());
 
     this.effects = {};
     this.smoothed = false;

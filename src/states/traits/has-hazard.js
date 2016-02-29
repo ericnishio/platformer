@@ -18,9 +18,7 @@ export default state => {
 
   state.stage.setCollisionByExclusion([], true, 'Hazard');
 
-  state.toUpdate = state.toUpdate || [];
-
-  state.toUpdate.push(
+  state.addToUpdate(
     state.game.physics.arcade.collide.bind(
       state.game.physics.arcade,
       state.getPlayer(),

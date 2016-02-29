@@ -16,9 +16,7 @@ export default state => {
     }
   };
 
-  state.toUpdate = state.toUpdate || [];
-
-  state.toUpdate.push(
+  state.addToUpdate(
     () => {
       trait.getItems().forEachAlive(item => {
         state.game.physics.arcade.collide(item, state.getPlatforms());

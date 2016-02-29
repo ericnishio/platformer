@@ -46,7 +46,7 @@ export default class Stage1 extends GameState {
   }
 
   update() {
-    this.toUpdate.forEach(func => func());
+    super.update();
 
     this.handleInput();
 
