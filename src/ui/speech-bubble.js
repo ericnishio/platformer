@@ -2,6 +2,7 @@ import {Keyboard} from 'phaser';
 
 import {TILE_SIZE, getGame} from 'core/game';
 import Box from 'ui/box';
+import {wordwrap} from 'services/util';
 
 /**
  * @param {string[]} messages
@@ -10,11 +11,20 @@ import Box from 'ui/box';
  */
 export default (messages, callback = () => {}) => {
   const container = Box(15, 8);
+  const wrappedMessages = wrapMessages(messages);
 
-  container.add(animateMessages(messages, container, callback));
+  container.add(animateMessages(wrappedMessages, container, callback));
 
   return container;
 };
+
+/**
+ * @param {string[]} messages
+ * @return {string[]}
+ */
+function wrapMessages(messages) {
+  return messages.map(message => wordwrap(message));
+}
 
 /**
  * @param {string[]} messages
