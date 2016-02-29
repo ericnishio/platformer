@@ -3,7 +3,7 @@ import {LEFT, RIGHT} from 'phaser';
 /**
  * @param {Phaser.Sprite} sprite
  * @param {Object} options
- * @return {Phaser.Sprite}
+ * @return {Object}
  */
 export default (sprite, options = {speed: 50}) => {
   const trait = Object.assign({}, options, {

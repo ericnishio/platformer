@@ -3,7 +3,7 @@ import {TILE_SIZE} from 'core/game';
 /**
  * @param {GameState} state
  * @param {Object} options
- * @return {GameState}
+ * @return {Object}
  */
 export default (state, options) => {
   const trait = {};

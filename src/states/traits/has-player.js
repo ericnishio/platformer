@@ -6,7 +6,7 @@ import Player from 'entities/actors/creatures/player';
 /**
  * @param {GameState} state
  * @param {Object} [options]
- * @return {GameState}
+ * @return {Object}
  */
 export default (state, options = {}) => {
   const trait = {

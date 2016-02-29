@@ -3,7 +3,7 @@ import {Keyboard, Gamepad} from 'phaser';
 /**
  * @param {GameState} state
  * @param {Object} options
- * @return {GameState}
+ * @return {Object}
  */
 export default (state, options) => {
   const actor = options.actor;

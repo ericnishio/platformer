@@ -2,7 +2,7 @@ import {getGame} from 'core/game';
 
 /**
  * @param {Phaser.Sprite} sprite
- * @return {Phaser.Sprite}
+ * @return {Object}
  */
 export default sprite => {
   const trait = {

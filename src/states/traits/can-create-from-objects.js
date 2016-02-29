@@ -1,6 +1,6 @@
 /**
  * @param {GameState} state
- * @return {GameState}
+ * @return {Object}
  */
 export default state => {
   return {

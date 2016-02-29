@@ -4,7 +4,7 @@ import {TYPE_FIREARM} from 'entities/actors/items/item';
 
 /**
  * @param {Phaser.Sprite} sprite
- * @return {Phaser.Sprite}
+ * @return {Object}
  */
 export default sprite => {
   const trait = {

@@ -5,7 +5,7 @@ import StageClear from 'states/stage-clear';
 /**
  * @param {GameState} state
  * @param {Object} options
- * @return {GameState}
+ * @return {Object}
  */
 export default (state, options) => {
   const trait = {

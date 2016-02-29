@@ -5,7 +5,7 @@ import {getGame} from 'core/game';
 /**
  * @param {Phaser.Sprite} sprite
  * @param {Object} [options]
- * @return {Phaser.Sprite}
+ * @return {Object}
  */
 export default (sprite, options = {oxygen: 100, maxOxygen: 100}) => {
   const trait = Object.assign({}, options, {

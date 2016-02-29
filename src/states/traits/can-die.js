@@ -4,7 +4,7 @@ import {getGame} from 'core/game';
 
 /**
  * @param {GameState} state
- * @return {GameState}
+ * @return {Object}
  */
 export default state => {
   const game = getGame();
