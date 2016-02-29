@@ -35,9 +35,6 @@ export class Terminal extends Structure {
     this.isInteracting = false;
 
     this.animations.add('scrollText');
-  }
-
-  update() {
     this.animations.play('scrollText', 4, true);
   }
 

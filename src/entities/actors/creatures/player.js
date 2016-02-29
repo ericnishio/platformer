@@ -6,6 +6,7 @@ import hasInventory from 'entities/traits/has-inventory';
 import canWalk from 'entities/traits/can-walk';
 import canJump from 'entities/traits/can-jump';
 import canWieldBlaster from 'entities/traits/can-wield-blaster';
+import canInteract from 'entities/traits/can-interact';
 import canDebug from 'entities/traits/can-debug';
 
 /**
@@ -32,6 +33,7 @@ export class Player extends Actor {
     Object.assign(this, canWalk(this, {speed: 80}));
     Object.assign(this, canJump(this));
     Object.assign(this, canWieldBlaster(this));
+    Object.assign(this, canInteract(this));
     Object.assign(this, canDebug(this));
 
     this.anchor.setTo(0.5, 1);
@@ -46,5 +48,9 @@ export class Player extends Actor {
       this.kill();
       this.effects.burn.play();
     }
+  }
+
+  update() {
+    this.toUpdate.forEach(func => func());
   }
 }
