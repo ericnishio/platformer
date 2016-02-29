@@ -1,14 +1,22 @@
 import Structure from './structure';
 import {getGame} from 'core/game';
 import SpeechBubble from 'ui/speech-bubble';
+import {nextMessages} from 'services/dialogue';
 
 /**
  * @param {number} x
  * @param {number} y
+ * @param {Object} params
  * @return {Terminal}
  */
-export default (x, y) => {
-  return new Terminal(getGame(), x, y);
+export default (x, y, params = {}) => {
+  const terminal = new Terminal(getGame(), x, y);
+
+  if (params.id) {
+    terminal.id = params.id;
+  }
+
+  return terminal;
 };
 
 export class Terminal extends Structure {
@@ -33,13 +41,15 @@ export class Terminal extends Structure {
     this.animations.play('scrollText', 4, true);
   }
 
-  interact() {
+  /**
+   * @param {Player} player
+   * @param {Phaser.State} stage
+   */
+  interact(player, stage) {
     if (!this.lastOverlap || this.game.time.now > this.lastOverlap) {
-      SpeechBubble([
-        `Good morning,\nElenor. Doesn't\nearth look\ndashing today?`,
-        `Why don't you\ngo out for a\nwalk and get\nsome fresh air?`,
-        'Haha!'
-      ]);
+      const messages = nextMessages(this.id, stage);
+
+      SpeechBubble(messages);
     }
 
     this.lastOverlap = this.game.time.now + 100;

@@ -35,7 +35,7 @@ export default class Stage1 extends GameState {
     Object.assign(this, canCreateFromObjects(this));
     Object.assign(this, canDie(this));
 
-    this.terminal = Terminal(getTilePosition(10), getTilePosition(8));
+    this.terminal = Terminal(getTilePosition(10), getTilePosition(8), {id: 'TERMINAL_1'});
 
     Object.assign(this, hasPlayer(this, {x: getTilePosition(15), y: getTilePosition(9), facing: LEFT}));
     Object.assign(this, canHandleInput(this, {actor: this.getPlayer()}));
@@ -49,6 +49,8 @@ export default class Stage1 extends GameState {
 
     this.handleInput();
 
-    this.game.physics.arcade.overlap(this.player, this.terminal, () => this.terminal.interact());
+    this.game.physics.arcade.overlap(this.player, this.terminal, () => {
+      this.terminal.interact(this.player, this);
+    });
   }
 }

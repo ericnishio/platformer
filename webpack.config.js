@@ -22,7 +22,9 @@ module.exports = {
       states: path.join(__dirname, 'src/states'),
       stages: path.join(__dirname, 'src/states/stages'),
       entities: path.join(__dirname, 'src/entities'),
+      services: path.join(__dirname, 'src/services'),
       ui: path.join(__dirname, 'src/ui'),
+      data: path.join(__dirname, 'src/data'),
       util: path.join(__dirname, 'src/util')
     },
     extensions: ['', '.js', '.jsx']
@@ -55,7 +57,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: 'file' // json
+        loader: 'file' // resolve JSON file
       }
     ]
   },
