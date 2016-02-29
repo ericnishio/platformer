@@ -46,6 +46,10 @@ export default class Actor extends Sprite {
     this.body.setSize(this.width - pixels, this.height);
   }
 
+  update() {
+    this.runToUpdate();
+  }
+
   /**
    * Handles a collision with another actor.
    * @param {Actor} actor

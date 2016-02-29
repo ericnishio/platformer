@@ -51,6 +51,6 @@ export class Player extends Actor {
   }
 
   update() {
-    this.runToUpdate();
+    super.update();
   }
 }
