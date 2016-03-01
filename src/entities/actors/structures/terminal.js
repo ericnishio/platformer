@@ -40,7 +40,7 @@ export class Terminal extends Structure {
 
   /**
    * @param {Player} player
-   * @param {Phaser.State} stage
+   * @param {GameState} stage
    */
   interact(player, stage) {
     if (!this.lastOverlap || this.game.time.now > this.lastOverlap) {

@@ -4,7 +4,7 @@ const dialogueState = {};
 
 /**
  * @param {string} actorId
- * @param {Phaser.State} stage
+ * @param {GameState} stage
  * @return {string[]}
  */
 export function nextMessages(actorId, stage) {
@@ -30,7 +30,7 @@ export function incrementDialogue(actorId) {
  * @param {string} actorId
  * @param {number} dialogueIndex
  * @param {Object} dialogues
- * @param {Phaser.State} stage
+ * @param {GameState} stage
  * @return {string[]}
  */
 function getNextMessages(actorId, dialogueIndex, dialogues, stage) {
@@ -51,7 +51,7 @@ function getNextMessages(actorId, dialogueIndex, dialogues, stage) {
 
 /**
  * @param {Object[]} prerequisites
- * @param {Phaser.State} stage
+ * @param {GameState} stage
  * @return {boolean}
  */
 function satisfiesPrerequisites(prerequisites, stage) {
@@ -66,7 +66,7 @@ function satisfiesPrerequisites(prerequisites, stage) {
 
 /**
  * @param {Object} prerequisite
- * @param {Phaser.State} stage
+ * @param {GameState} stage
  * @return {boolean}
  */
 function satisfiesPrerequisite(prerequisite, stage) {
