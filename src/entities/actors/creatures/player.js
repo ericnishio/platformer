@@ -1,13 +1,13 @@
 import {getGame} from 'core/game';
 import Actor from 'entities/actors/actor';
-import isAffectedByGravity from 'entities/traits/is-affected-by-gravity';
-import needsOxygen from 'entities/traits/needs-oxygen';
-import hasInventory from 'entities/traits/has-inventory';
-import canWalk from 'entities/traits/can-walk';
-import canJump from 'entities/traits/can-jump';
-import canWieldBlaster from 'entities/traits/can-wield-blaster';
-import canInteract from 'entities/traits/can-interact';
-import canDebug from 'entities/traits/can-debug';
+import isAffectedByGravity from 'entities/components/is-affected-by-gravity';
+import needsOxygen from 'entities/components/needs-oxygen';
+import hasInventory from 'entities/components/has-inventory';
+import canWalk from 'entities/components/can-walk';
+import canJump from 'entities/components/can-jump';
+import canWieldBlaster from 'entities/components/can-wield-blaster';
+import canInteract from 'entities/components/can-interact';
+import canDebug from 'entities/components/can-debug';
 
 /**
  * @param {number} x
@@ -27,14 +27,14 @@ export class Player extends Actor {
   constructor(game, x, y) {
     super(game, x, y, 'creatures-1x2-1', 0);
 
-    Object.assign(this, isAffectedByGravity(this));
-    Object.assign(this, needsOxygen(this, {oxygen: 100, maxOxygen: 100}));
-    Object.assign(this, hasInventory());
-    Object.assign(this, canWalk(this, {speed: 80}));
-    Object.assign(this, canJump(this));
-    Object.assign(this, canWieldBlaster(this));
-    Object.assign(this, canInteract(this));
-    Object.assign(this, canDebug(this));
+    this.addComponent(isAffectedByGravity);
+    this.addComponent(needsOxygen, {oxygen: 100, maxOxygen: 100});
+    this.addComponent(hasInventory);
+    this.addComponent(canWalk, {speed: 80});
+    this.addComponent(canJump);
+    this.addComponent(canWieldBlaster);
+    this.addComponent(canInteract);
+    this.addComponent(canDebug);
 
     this.anchor.setTo(0.5, 1);
 
@@ -51,6 +51,6 @@ export class Player extends Actor {
   }
 
   update() {
-    super.update();
+    this.getComponent('canInteract').update();
   }
 }

@@ -32,9 +32,9 @@ export class Blaster extends Item {
   handleCollision(actor) {
     super.handleCollision(actor);
 
-    if (actor.inventory) {
+    if (actor.getComponent('hasInventory')) {
       this.effects.pickup.play();
-      actor.addToInventory(this);
+      actor.getComponent('hasInventory').addToInventory(this);
       this.kill();
     }
   }

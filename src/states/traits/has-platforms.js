@@ -23,7 +23,7 @@ export default state => {
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, state.getItems(), trait.getPlatforms()),
 
     // TODO: Move elsewhere.
-    state.game.physics.arcade.collide.bind(state.game.physics.arcade, state.getPlayer().getBullets(), trait.getPlatforms(), bullet => {
+    state.game.physics.arcade.collide.bind(state.game.physics.arcade, state.getPlayer().getComponent('canWieldBlaster').getBullets(), trait.getPlatforms(), bullet => {
       bullet.kill();
     })
   );

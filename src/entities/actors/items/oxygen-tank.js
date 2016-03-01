@@ -31,10 +31,10 @@ export class OxygenTank extends Item {
   handleCollision(actor) {
     super.handleCollision(actor);
 
-    if (actor.inventory) {
+    if (actor.getComponent('needsOxygen')) {
       this.kill();
       this.effects.pickup.play();
-      actor.increaseOxygenBy(50);
+      actor.getComponent('needsOxygen').increaseOxygenBy(50);
     }
   }
 }

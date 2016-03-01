@@ -28,7 +28,7 @@ export class OxygenMeter extends Sprite {
   }
 
   update() {
-    const percentage = this.player.getOxygenAsPercentage();
+    const percentage = this.player.getComponent('needsOxygen').getOxygenAsPercentage();
     const factor = percentage / 100;
 
     this.progressBar.width = 112 * factor;

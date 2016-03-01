@@ -2,12 +2,12 @@ import {getTilePosition} from 'core/game';
 import Blaster from 'entities/actors/items/blaster';
 
 /**
- * @param {Phaser.Sprite} sprite
+ * @param {Phaser.Sprite} parent
  */
-export default sprite => {
+export default parent => {
   window.IDKFA = () => {
-    const blaster = Blaster(sprite.x, sprite.y);
-    sprite.addToInventory(blaster);
+    const blaster = Blaster(parent.x, parent.y);
+    parent.getComponent('hasInventory').addToInventory(blaster);
     blaster.kill();
   };
 
@@ -16,7 +16,7 @@ export default sprite => {
    * @param {number} tileY
    */
   window.GOTO = (tileX, tileY) => {
-    sprite.x = getTilePosition(tileX);
-    sprite.y = getTilePosition(tileY);
+    parent.x = getTilePosition(tileX);
+    parent.y = getTilePosition(tileY);
   };
 };

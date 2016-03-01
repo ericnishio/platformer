@@ -42,7 +42,7 @@ export default state => {
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, trait.getObstacles(), state.getPlayer()),
     state.game.physics.arcade.collide.bind(state.game.physics.arcade, trait.getObstacles(), state.getPlatforms()),
     () => {
-      state.game.physics.arcade.overlap(trait.getObstacles(), state.getPlayer().getBullets(), (obstacle, bullet) => {
+      state.game.physics.arcade.overlap(trait.getObstacles(), state.getPlayer().getComponent('canWieldBlaster').getBullets(), (obstacle, bullet) => {
         obstacle.kill();
         obstacle.effects.destroy.play();
         bullet.kill();

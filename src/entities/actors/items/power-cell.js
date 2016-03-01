@@ -31,9 +31,9 @@ export class PowerCell extends Item {
   handleCollision(actor) {
     super.handleCollision(actor);
 
-    if (actor.inventory) {
+    if (actor.getComponent('hasInventory')) {
       this.kill();
-      actor.addToInventory(this);
+      actor.getComponent('hasInventory').addToInventory(this);
       this.effects.pickup.play();
     }
   }

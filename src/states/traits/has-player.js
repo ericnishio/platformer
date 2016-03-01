@@ -33,7 +33,7 @@ export default (state, options = {}) => {
 
     if (options.facing) {
       trait.player.facingX = options.facing;
-      trait.player.walkLeft();
+      trait.player.getComponent('canWalk').walkLeft();
     }
   }
 

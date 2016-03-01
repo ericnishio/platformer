@@ -51,7 +51,7 @@ export default class Stage1 extends GameState {
     this.handleInput();
 
     this.game.physics.arcade.overlap(this.player, this.terminal, () => {
-      this.player.suggestInteraction(() => {
+      this.player.getComponent('canInteract').suggestInteraction(() => {
         this.terminal.interact(this.player, this);
       });
     });

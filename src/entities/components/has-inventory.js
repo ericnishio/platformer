@@ -1,8 +1,9 @@
 /**
+ * @param {Object} parent
  * @return {Object}
  */
-export default () => {
-  return {
+export default parent => {
+  const component = {
     inventory: [],
 
     /**
@@ -52,7 +53,7 @@ export default () => {
     getItemCountInInventory(item) {
       let count = 0;
 
-      this.inventory.forEach((itemInInventory) => {
+      this.inventory.forEach(itemInInventory => {
         if (item.name === itemInInventory.name) {
           count += 1;
         }
@@ -78,4 +79,8 @@ export default () => {
       return this.getItemCountInInventory(item) < item.getMaxInInventory();
     }
   };
+
+  parent._components.hasInventory = component;
+
+  return component;
 };

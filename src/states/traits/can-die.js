@@ -21,7 +21,7 @@ export default state => {
 
   state.addToUpdate(
     () => {
-      if (state.getPlayer().alive && !state.getPlayer().hasOxygen()) {
+      if (state.getPlayer().alive && !state.getPlayer().getComponent('needsOxygen').hasOxygen()) {
         console.log('You ran out of oxygen.');
 
         trait.die();

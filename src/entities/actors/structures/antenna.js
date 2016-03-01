@@ -34,7 +34,7 @@ export class Antenna extends Structure {
    */
   activate(actor) {
     if (!this.isActivated()) {
-      if (actor.hasItemByName('Power Cell')) {
+      if (actor.getComponent('hasInventory').hasItemByName('Power Cell')) {
         this.effects.activate.play();
         this.animations.play('activate');
         this.activated = true;

@@ -1,6 +1,6 @@
 import GameState from 'states/game-state';
 import Preloader from 'states/preloader';
-import Stage1 from 'states/stages/stage-1';
+import TestStage from 'states/stages/test-stage';
 import {startStage} from 'core/game';
 
 export default class Boot extends GameState {
@@ -19,6 +19,6 @@ export default class Boot extends GameState {
 
     this.game.state.add('Preloader', Preloader, false);
 
-    startStage('Stage1', Stage1);
+    startStage('Stage1', TestStage);
   }
 }
