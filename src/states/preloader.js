@@ -18,7 +18,7 @@ export default class Preloader extends GameState {
 
     this.load.setPreloadSprite(this.preloadBar);
 
-    this.stageClass.toPreload(this);
+    this.stageClass.onPreload(this);
   }
 
   create() {

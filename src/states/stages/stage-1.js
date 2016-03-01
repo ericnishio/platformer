@@ -14,7 +14,7 @@ import canDie from 'states/components/can-die';
 import Terminal from 'entities/actors/structures/terminal';
 
 export default class Stage1 extends GameState {
-  static toPreload(preloader) {
+  static onPreload(preloader) {
     preloader.load.tilemap('Stage1', require('file!assets/tilemaps/stage-1.json'), null, Tilemap.TILED_JSON);
 
     preloader.load.spritesheet('interior-1x1-1', require('assets/spritesheets/interior-1x1-1.png'), TILE_SIZE, TILE_SIZE);
