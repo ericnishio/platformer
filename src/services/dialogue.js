@@ -8,7 +8,7 @@ const dialogueState = {};
  * @return {string[]}
  */
 export function nextMessages(actorId, stage) {
-  const dialogues = require(`data/dialogues/${actorId}`);
+  const dialogues = require(`json!data/dialogues/${actorId}.json`);
   const dialogueIndexNow = get(dialogueState, `${actorId}`, -1);
   const dialogueIndexNext = dialogueIndexNow + 1;
 

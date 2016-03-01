@@ -54,10 +54,6 @@ module.exports = {
       {
         test: /\.(|fnt|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file'
-      },
-      {
-        test: /\.json$/,
-        loader: 'file' // resolve JSON file
       }
     ]
   },

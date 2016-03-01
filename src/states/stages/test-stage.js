@@ -24,7 +24,7 @@ import {TwinklingStar} from 'entities/decorations/twinkling-star';
 
 export default class TestStage extends GameState {
   static toPreload(preloader) {
-    preloader.load.tilemap('TestStage', require('assets/tilemaps/test-stage.json'), null, Tilemap.TILED_JSON);
+    preloader.load.tilemap('TestStage', require('file!assets/tilemaps/test-stage.json'), null, Tilemap.TILED_JSON);
 
     preloader.load.spritesheet('terrain-1x1-1', require('assets/spritesheets/terrain-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('structures-2x2-1', require('assets/spritesheets/structures-2x2-1.png'), TILE_SIZE * 2, TILE_SIZE * 2);
