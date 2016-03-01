@@ -12,6 +12,7 @@ import hasItems from 'states/components/has-items';
 import canCreateFromObjects from 'states/components/can-create-from-objects';
 import canDie from 'states/components/can-die';
 import Terminal from 'entities/actors/structures/terminal';
+import Floppy from 'entities/actors/items/floppy';
 
 export default class Stage1 extends GameState {
   static onPreload(preloader) {
@@ -24,8 +25,10 @@ export default class Stage1 extends GameState {
     preloader.load.spritesheet('terminal-facing-left', require('assets/spritesheets/animations/terminal-facing-left.png'), TILE_SIZE, TILE_SIZE, 3);
     preloader.load.spritesheet('menus-1x1-1', require('assets/spritesheets/menus-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('effects-1x1-1', require('assets/spritesheets/effects-1x1-1.png'), TILE_SIZE, TILE_SIZE);
+    preloader.load.spritesheet('items-1x1-1', require('assets/spritesheets/items-1x1-1.png'), TILE_SIZE, TILE_SIZE);
 
     preloader.load.audio('step', require('assets/audio/effects/step.ogg'));
+    preloader.load.audio('powerup2', require('assets/audio/effects/powerup2.ogg'));
   }
 
   create() {
@@ -41,6 +44,8 @@ export default class Stage1 extends GameState {
     this.addComponent(canHandleInput, {actor: this.getComponent('hasPlayer').getPlayer()});
     this.addComponent(hasPlatforms);
     this.addComponent(hasItems);
+
+    this.floppy = Floppy(getTilePosition(8), getTilePosition(8) - 4, {id: 'FLOPPY_1'});
   }
 
   update() {
@@ -50,6 +55,9 @@ export default class Stage1 extends GameState {
     this.getComponent('canHandleInput').update();
 
     const player = this.getComponent('hasPlayer').getPlayer();
+
+    this.game.physics.arcade.collide(this.floppy, this.getComponent('hasPlatforms').platforms);
+    this.game.physics.arcade.collide(this.floppy, player, () => this.floppy.handleCollision(player));
 
     this.game.physics.arcade.overlap(player, this.terminal, () => {
       player.getComponent('canInteract').suggestInteraction(() => {

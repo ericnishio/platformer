@@ -1,3 +1,5 @@
+import {find} from 'lodash';
+
 /**
  * @param {Object} parent
  * @return {Object}
@@ -44,6 +46,14 @@ export default parent => {
       });
 
       return hasIt;
+    },
+
+    /**
+     * @param {string} itemId
+     * @return {boolean}
+     */
+    hasItemById(itemId) {
+      return !!find(this.inventory, item => item.id === itemId);
     },
 
     /**

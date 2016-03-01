@@ -1,4 +1,4 @@
-import {get, find} from 'lodash';
+import {get} from 'lodash';
 
 const dialogueState = {};
 
@@ -87,7 +87,5 @@ function satisfiesPrerequisite(prerequisite, stage) {
  * @return {boolean}
  */
 function playerHasItem(player, itemId) {
-  const inventory = get(player, 'inventory');
-
-  return !!find(inventory, i => i.id === itemId);
+  return player.getComponent('hasInventory').hasItemById(itemId);
 }
