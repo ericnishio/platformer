@@ -72,7 +72,7 @@ function satisfiesPrerequisites(prerequisites, stage) {
 function satisfiesPrerequisite(prerequisite, stage) {
   switch (prerequisite.type) {
     case 'PLAYER_HAS_ITEM':
-      return playerHasItem(stage.getPlayer(), prerequisite.params.itemId);
+      return playerHasItem(stage.getComponent('hasPlayer').getPlayer(), prerequisite.params.itemId);
 
     // TODO: Implement prerequisite evaluators.
 

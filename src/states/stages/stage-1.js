@@ -2,16 +2,15 @@ import {LEFT, Tilemap} from 'phaser';
 
 import {TILE_SIZE, getTilePosition} from 'core/game';
 import GameState from 'states/game-state';
-import hasTilemap from 'states/traits/has-tilemap';
-import hasSky from 'states/traits/has-sky';
-import hasPlayer from 'states/traits/has-player';
-import canHandleInput from 'states/traits/can-handle-input';
-import hasNextStage from 'states/traits/has-next-stage';
-import hasObstacles from 'states/traits/has-obstacles';
-import hasPlatforms from 'states/traits/has-platforms';
-import hasItems from 'states/traits/has-items';
-import canCreateFromObjects from 'states/traits/can-create-from-objects';
-import canDie from 'states/traits/can-die';
+import hasTilemap from 'states/components/has-tilemap';
+import hasSky from 'states/components/has-sky';
+import hasPlayer from 'states/components/has-player';
+import canHandleInput from 'states/components/can-handle-input';
+import hasNextStage from 'states/components/has-next-stage';
+import hasPlatforms from 'states/components/has-platforms';
+import hasItems from 'states/components/has-items';
+import canCreateFromObjects from 'states/components/can-create-from-objects';
+import canDie from 'states/components/can-die';
 import Terminal from 'entities/actors/structures/terminal';
 
 export default class Stage1 extends GameState {
@@ -30,29 +29,31 @@ export default class Stage1 extends GameState {
   }
 
   create() {
-    Object.assign(this, hasTilemap(this, {tilemap: 'Stage1', tilesets: ['interior-1x1-1']}));
-    Object.assign(this, hasSky(this));
-    Object.assign(this, hasNextStage(this, {id: 'Stage1', class: Stage1}));
-    Object.assign(this, canCreateFromObjects(this));
-    Object.assign(this, canDie(this));
+    this.addComponent(hasTilemap, {tilemap: 'Stage1', tilesets: ['interior-1x1-1']});
+    this.addComponent(hasSky);
+    this.addComponent(hasNextStage, {id: 'Stage1', class: Stage1});
+    this.addComponent(canCreateFromObjects);
 
     this.terminal = Terminal(getTilePosition(10), getTilePosition(8), {id: 'TERMINAL_1'});
 
-    Object.assign(this, hasPlayer(this, {x: getTilePosition(15), y: getTilePosition(9), facing: LEFT}));
-    Object.assign(this, canHandleInput(this, {actor: this.getPlayer()}));
-    Object.assign(this, hasItems(this));
-    Object.assign(this, hasPlatforms(this));
-    Object.assign(this, hasObstacles(this));
+    this.addComponent(hasPlayer, {x: getTilePosition(15), y: getTilePosition(9), facing: LEFT});
+    this.addComponent(canDie);
+    this.addComponent(canHandleInput, {actor: this.getComponent('hasPlayer').getPlayer()});
+    this.addComponent(hasPlatforms);
+    this.addComponent(hasItems);
   }
 
   update() {
-    super.update();
+    this.getComponent('canDie').update();
+    this.getComponent('hasItems').update();
+    this.getComponent('hasPlatforms').update();
+    this.getComponent('canHandleInput').update();
 
-    this.handleInput();
+    const player = this.getComponent('hasPlayer').getPlayer();
 
-    this.game.physics.arcade.overlap(this.player, this.terminal, () => {
-      this.player.getComponent('canInteract').suggestInteraction(() => {
-        this.terminal.interact(this.player, this);
+    this.game.physics.arcade.overlap(player, this.terminal, () => {
+      player.getComponent('canInteract').suggestInteraction(() => {
+        this.terminal.interact(player, this);
       });
     });
   }

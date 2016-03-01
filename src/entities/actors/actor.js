@@ -1,7 +1,6 @@
 import {Sprite, Physics} from 'phaser';
 
 import hasComponents from 'core/has-components';
-import toUpdate from 'core/to-update';
 
 export default class Actor extends Sprite {
   /**
@@ -15,7 +14,6 @@ export default class Actor extends Sprite {
     super(game, x, y, spritesheet, tileIndex);
 
     Object.assign(this, hasComponents);
-    Object.assign(this, toUpdate());
 
     this.effects = {};
     this.smoothed = false;
@@ -46,10 +44,6 @@ export default class Actor extends Sprite {
    */
   decreaseWidthBy(pixels) {
     this.body.setSize(this.width - pixels, this.height);
-  }
-
-  update() {
-    this.runToUpdate();
   }
 
   /**

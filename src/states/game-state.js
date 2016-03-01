@@ -2,13 +2,13 @@ import {State} from 'phaser';
 import PixelScaler from 'lib/pixel-scaler';
 
 import {PIXEL_SCALE} from 'core/game';
-import toUpdate from 'core/to-update';
+import hasComponents from 'core/has-components';
 
 export default class GameState extends State {
   constructor() {
     super();
 
-    Object.assign(this, toUpdate());
+    Object.assign(this, hasComponents);
   }
 
   create() {
@@ -16,9 +16,5 @@ export default class GameState extends State {
       this.game.plugins.add(PixelScaler, PIXEL_SCALE);
       this.game.pixelScalerEnabled = true;
     }
-  }
-
-  update() {
-    this.runToUpdate();
   }
 }
