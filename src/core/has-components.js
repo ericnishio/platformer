@@ -1,3 +1,7 @@
+/**
+ * @param {*} parent
+ * @return {Object}
+ */
 export default parent => {
   return {
     _components: {},
