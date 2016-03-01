@@ -13,7 +13,7 @@ export default class Actor extends Sprite {
   constructor(game, x, y, spritesheet, tileIndex) {
     super(game, x, y, spritesheet, tileIndex);
 
-    Object.assign(this, hasComponents);
+    Object.assign(this, hasComponents(this));
 
     this.effects = {};
     this.smoothed = false;

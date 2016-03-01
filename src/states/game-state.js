@@ -8,7 +8,7 @@ export default class GameState extends State {
   constructor() {
     super();
 
-    Object.assign(this, hasComponents);
+    Object.assign(this, hasComponents(this));
   }
 
   create() {
