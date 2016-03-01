@@ -26,7 +26,7 @@ export class Terminal extends Structure {
    * @param {number} y
    */
   constructor(game, x, y) {
-    super(game, x, y, 'terminal-facing-right', 0);
+    super(game, x, y, 'terminal-facing-left', 0);
 
     this.name = 'Terminal';
     this.anchor.setTo(0, 0);
@@ -50,5 +50,12 @@ export class Terminal extends Structure {
     }
 
     this.lastOverlap = this.game.time.now + 100;
+  }
+
+  /**
+   * @inheritdoc
+   */
+  handleCollision(actor) {
+    super.handleCollision(actor);
   }
 }

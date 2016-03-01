@@ -1,4 +1,4 @@
-import {LEFT, Tilemap} from 'phaser';
+import {Tilemap} from 'phaser';
 
 import {TILE_SIZE, getTilePosition} from 'core/game';
 import GameState from 'states/game-state';
@@ -21,7 +21,7 @@ export default class Stage1 extends GameState {
     preloader.load.spritesheet('creatures-1x2-1', require('assets/spritesheets/creatures-1x2-1.png'), TILE_SIZE, TILE_SIZE * 2);
     preloader.load.spritesheet('weapons-1x1-1', require('assets/spritesheets/weapons-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('oxygen-meter', require('assets/spritesheets/oxygen-meter.png'), TILE_SIZE * 7, TILE_SIZE);
-    preloader.load.spritesheet('terminal-facing-right', require('assets/spritesheets/animations/terminal-facing-right.png'), TILE_SIZE, TILE_SIZE, 3);
+    preloader.load.spritesheet('terminal-facing-left', require('assets/spritesheets/animations/terminal-facing-left.png'), TILE_SIZE, TILE_SIZE, 3);
     preloader.load.spritesheet('menus-1x1-1', require('assets/spritesheets/menus-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('effects-1x1-1', require('assets/spritesheets/effects-1x1-1.png'), TILE_SIZE, TILE_SIZE);
 
@@ -34,9 +34,9 @@ export default class Stage1 extends GameState {
     this.addComponent(hasNextStage, {id: 'Stage1', class: Stage1});
     this.addComponent(canCreateFromObjects);
 
-    this.terminal = Terminal(getTilePosition(10), getTilePosition(8), {id: 'TERMINAL_1'});
+    this.terminal = Terminal(getTilePosition(13) + 4, getTilePosition(7) + 7, {id: 'TERMINAL_1'});
 
-    this.addComponent(hasPlayer, {x: getTilePosition(15), y: getTilePosition(9), facing: LEFT});
+    this.addComponent(hasPlayer, {x: getTilePosition(10), y: getTilePosition(9)});
     this.addComponent(canDie);
     this.addComponent(canHandleInput, {actor: this.getComponent('hasPlayer').getPlayer()});
     this.addComponent(hasPlatforms);
