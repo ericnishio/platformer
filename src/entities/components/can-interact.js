@@ -10,6 +10,7 @@ export default parent => {
   }
 
   const component = {
+    isInteracting: false,
     questionMark: parent.game.add.sprite(-6, -45, 'effects-1x1-1', 8),
 
     /**
@@ -20,12 +21,14 @@ export default parent => {
         component.questionMark.visible = true;
       }
 
-      parent.game.input.keyboard
-        .addKey(Keyboard.I)
-        .onDown.add(() => {
-          interact();
-          parent.game.input.keyboard.removeKey(Keyboard.I);
-        }, this);
+      if (!component.isInteracting) {
+        parent.game.input.keyboard
+          .addKey(Keyboard.ENTER)
+          .onDown.add(() => {
+            interact();
+            component.isInteracting = true;
+          }, this);
+      }
 
       component.lastInteraction = parent.game.time.now + 100;
     },
@@ -33,6 +36,8 @@ export default parent => {
     update() {
       if (!component.lastInteraction || parent.game.time.now > component.lastInteraction) {
         component.questionMark.visible = false;
+
+        this.isInteracting = false;
       }
     }
   };

@@ -59,6 +59,8 @@ function animateMessages(messages, container, callback) {
       const timer = game.time.create(false);
       const character = characters[currentCharacterIndex];
 
+      game.input.keyboard.removeKey(Keyboard.ENTER);
+
       game.input.keyboard
         .addKey(Keyboard.ENTER)
         .onDown.add(() => {
