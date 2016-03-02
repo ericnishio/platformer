@@ -37,7 +37,6 @@ export class Player extends Actor {
     this.addComponent(canDebug);
 
     this.anchor.setTo(0.5, 1);
-
     this.decreaseHeightBy(5);
 
     this.effects.burn = this.game.add.audio('combustion1', 1, false);
@@ -52,5 +51,16 @@ export class Player extends Actor {
 
   update() {
     this.getComponent('canInteract').update();
+  }
+
+  /**
+   * @return {Object}
+   */
+  createSnapshot() {
+    return {
+      x: this.x,
+      y: this.y,
+      _components: this.createComponentSnapshots()
+    };
   }
 }

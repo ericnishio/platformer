@@ -1,5 +1,7 @@
 import {Keyboard, Gamepad} from 'phaser';
 
+import {saveGame} from 'services/save-game';
+
 /**
  * @param {GameState} parent
  * @param {Object} options
@@ -59,6 +61,11 @@ export default (parent, {actor}) => {
       }
     }
   };
+
+  // Save game
+  parent.game.input.keyboard
+    .addKey(Keyboard.F5)
+    .onDown.add(() => saveGame(parent.game, actor), this);
 
   component.pad1 = parent.game.input.gamepad.pad1;
   parent.game.input.gamepad.start();

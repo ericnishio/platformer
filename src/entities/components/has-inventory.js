@@ -87,6 +87,19 @@ export default parent => {
      */
     canAddToInventory(item) {
       return this.getItemCountInInventory(item) < item.getMaxInInventory();
+    },
+
+    /**
+     * @return {Object}
+     */
+    createSnapshot() {
+      return {
+        inventory: component.inventory.map(item => ({
+          id: item.id,
+          name: item.name
+          // TODO: Include more props.
+        }))
+      };
     }
   };
 
