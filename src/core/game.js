@@ -39,10 +39,7 @@ export function getGame() {
  * @param {Stage} stageClass
  */
 export function startStage(stageId, stageClass) {
-  const params = {
-    id: stageId,
-    class: stageClass
-  };
+  const params = {stageId, stageClass};
 
   getGame().state.start('Preloader', true, false, params);
 }

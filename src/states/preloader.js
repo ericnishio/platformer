@@ -5,11 +5,11 @@ import Stage1 from 'states/stages/stage-1';
 import {TILE_SIZE} from 'core/game';
 
 export default class Preloader extends GameState {
-  init(params) {
-    this.stageId = params.id || 'Stage1';
-    this.stageClass = params.class || Stage1;
+  init({stageId = 'Stage1', stageClass = Stage1}) {
+    this.stageId = stageId;
+    this.stageClass = stageClass;
 
-    this.game.state.add(params.id, params.class, false);
+    this.game.state.add(stageId, stageClass, false);
   }
 
   preload() {

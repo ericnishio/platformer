@@ -7,7 +7,7 @@ import StageClear from 'states/stage-clear';
  * @param {Object} options
  * @return {Object}
  */
-export default (parent, options) => {
+export default (parent, {stageId, stageClass}) => {
   const component = {
     win() {
       if (!component.isVictorious()) {
@@ -16,10 +16,7 @@ export default (parent, options) => {
         console.log('You beat the stage.');
 
         parent.game.time.events.add(Timer.SECOND * 1.5, () => {
-          parent.game.state.start('StageClear', true, false, {
-            id: options.id,
-            class: options.class
-          });
+          parent.game.state.start('StageClear', true, false, {stageId, stageClass});
         });
       }
     },

@@ -47,7 +47,7 @@ export default class TestStage extends GameState {
   create() {
     this.addComponent(hasTilemap, {tilemap: 'TestStage', tilesets: ['terrain-1x1-1']});
     this.addComponent(hasSky);
-    this.addComponent(hasNextStage, {id: 'TestStage', class: TestStage});
+    this.addComponent(hasNextStage, {stageId: 'TestStage', stageClass: TestStage});
     this.addComponent(hasDecorations);
     this.addComponent(hasExplosions);
     this.addComponent(canCreateFromObjects);

@@ -5,11 +5,10 @@ import {TILE_SIZE} from 'core/game';
  * @param {Object} options
  * @return {Object}
  */
-export default (parent, options) => {
+export default (parent, {tilemap, tilesets = []}) => {
   const component = {};
-  const tilesets = options.tilesets || [];
 
-  parent.stage = parent.game.add.tilemap(options.tilemap, TILE_SIZE, TILE_SIZE);
+  parent.stage = parent.game.add.tilemap(tilemap, TILE_SIZE, TILE_SIZE);
 
   tilesets.forEach(tileset => {
     parent.stage.addTilesetImage(tileset);

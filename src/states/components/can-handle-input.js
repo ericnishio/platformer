@@ -5,9 +5,7 @@ import {Keyboard, Gamepad} from 'phaser';
  * @param {Object} options
  * @return {Object}
  */
-export default (parent, options) => {
-  const actor = options.actor;
-
+export default (parent, {actor}) => {
   const component = {
     update() {
       actor.body.velocity.x = 0;

@@ -34,7 +34,7 @@ export default class Stage1 extends GameState {
   create() {
     this.addComponent(hasTilemap, {tilemap: 'Stage1', tilesets: ['interior-1x1-1']});
     this.addComponent(hasSky);
-    this.addComponent(hasNextStage, {id: 'Stage1', class: Stage1});
+    this.addComponent(hasNextStage, {stageId: 'Stage1', stageClass: Stage1});
     this.addComponent(canCreateFromObjects);
 
     this.terminal = Terminal(getTilePosition(13) + 4, getTilePosition(7) + 7, {id: 'TERMINAL_1'});
