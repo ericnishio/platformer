@@ -15,11 +15,10 @@ import hasHazard from 'states/components/has-hazard';
 import hasItems from 'states/components/has-items';
 import canCreateFromObjects from 'states/components/can-create-from-objects';
 import canDie from 'states/components/can-die';
-import Antenna from 'entities/actors/structures/antenna';
-import Blaster from 'entities/actors/items/blaster';
-import OxygenTank from 'entities/actors/items/oxygen-tank';
-import PowerCell from 'entities/actors/items/power-cell';
-import {Crate} from 'entities/actors/structures/crate';
+import {createItem} from 'entities/actors/items/item';
+import {createStructure} from 'entities/actors/structures/structure';
+import Crate from 'entities/actors/structures/crate';
+
 import {TwinklingStar} from 'entities/decorations/twinkling-star';
 
 export default class TestStage extends GameState {
@@ -59,16 +58,16 @@ export default class TestStage extends GameState {
     this.addComponent(hasItems);
     this.addComponent(hasObstacles);
 
-    this.getComponent('hasItems').getItems().add(OxygenTank(getTilePosition(42), getTilePosition(18)));
-    this.getComponent('hasItems').getItems().add(Blaster(getTilePosition(29), getTilePosition(18)));
-    this.getComponent('hasItems').getItems().add(PowerCell(getTilePosition(40), getTilePosition(8)));
+    this.getComponent('hasItems').getItems().add(createItem('OxygenTank', getTilePosition(42), getTilePosition(18)));
+    this.getComponent('hasItems').getItems().add(createItem('Blaster', getTilePosition(29), getTilePosition(18)));
+    this.getComponent('hasItems').getItems().add(createItem('PowerCell', getTilePosition(40), getTilePosition(8)));
 
     this.getComponent('canCreateFromObjects').createFromObjects('Crates', 2, Crate, this.getComponent('hasObstacles').getObstacles());
     this.getComponent('canCreateFromObjects').createFromObjects('Stars', 26, TwinklingStar, this.getComponent('hasDecorations').getDecorations());
 
     this.getComponent('hasPlayer').getPlayer().getComponent('needsOxygen').startOxygenConsumption();
 
-    this.antenna = Antenna(getTilePosition(52), getTilePosition(0));
+    this.antenna = createStructure('Antenna', getTilePosition(52), getTilePosition(0));
   }
 
   update() {

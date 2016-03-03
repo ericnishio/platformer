@@ -1,4 +1,15 @@
-import Actor from 'entities/actors/actor';
+import Actor, {createActor} from 'entities/actors/actor';
+
+/**
+ * @param {string} className
+ * @param {number} x
+ * @param {number} y
+ * @param {Object} [options]
+ * @return {Item}
+ */
+export function createStructure(className, x, y, options = {}) {
+  return createActor('structures', className, x, y, options);
+}
 
 export default class Structure extends Actor {
   /**

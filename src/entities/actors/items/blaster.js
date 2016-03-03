@@ -1,16 +1,6 @@
 import Item, {TYPE_FIREARM} from './item';
-import {getGame} from 'core/game';
 
-/**
- * @param {number} x
- * @param {number} y
- * @return {Blaster}
- */
-export default (x, y) => {
-  return new Blaster(getGame(), x, y);
-};
-
-export class Blaster extends Item {
+export default class Blaster extends Item {
   /**
    * @param {Phaser.Game} game
    * @param {number} x
@@ -20,7 +10,7 @@ export class Blaster extends Item {
     super(game, x, y, 'items-1x1-1', 1);
 
     this.power = 3;
-    this.name = 'Blaster';
+    this.className = 'Blaster';
     this.itemType = TYPE_FIREARM;
 
     this.effects.pickup = this.game.add.audio('powerup2', 1, false);

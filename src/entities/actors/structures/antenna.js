@@ -1,16 +1,6 @@
 import Structure from './structure';
-import {getGame} from 'core/game';
 
-/**
- * @param {number} x
- * @param {number} y
- * @return {Antenna}
- */
-export default (x, y) => {
-  return new Antenna(getGame(), x, y);
-};
-
-export class Antenna extends Structure {
+export default class Antenna extends Structure {
   /**
    * @param {Phaser.Game} game
    * @param {number} x
@@ -19,8 +9,8 @@ export class Antenna extends Structure {
   constructor(game, x, y) {
     super(game, x, y, 'structures-2x2-1', 0);
 
+    this.className = 'Antenna';
     this.activated = false;
-    this.name = 'Antenna';
     this.anchor.setTo(0, 0);
     this.body.immovable = true;
 
@@ -34,7 +24,7 @@ export class Antenna extends Structure {
    */
   activate(actor) {
     if (!this.isActivated()) {
-      if (actor.getComponent('hasInventory').hasItemByName('Power Cell')) {
+      if (actor.getComponent('hasInventory').hasItemByClassName('PowerCell')) {
         this.effects.activate.play();
         this.animations.play('activate');
         this.activated = true;

@@ -1,8 +1,19 @@
-import Actor from 'entities/actors/actor';
+import Actor, {createActor} from 'entities/actors/actor';
 
 export const TYPE_POWERUP = 'POWERUP';
 export const TYPE_FIREARM = 'FIREARM';
 export const TYPE_MISSION_ITEM = 'MISSION_ITEM';
+
+/**
+ * @param {string} className
+ * @param {number} x
+ * @param {number} y
+ * @param {Object} [options]
+ * @return {Item}
+ */
+export function createItem(className, x, y, options = {}) {
+  return createActor('items', className, x, y, options);
+}
 
 export default class Item extends Actor {
   /**

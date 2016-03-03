@@ -1,6 +1,21 @@
 import {Sprite, Physics} from 'phaser';
 
 import hasComponents from 'core/has-components';
+import {getGame} from 'core/game';
+import {camelToKebab} from 'services/util';
+
+/**
+ * @param {string} subdirectory
+ * @param {string} className
+ * @param {Object} options
+ * @return {Item}
+ */
+export function createActor(subdirectory, className, x, y, options) {
+  const itemModule = require(`./${subdirectory}/${camelToKebab(className)}`);
+  const item = new itemModule.default(getGame(), x, y);
+
+  return Object.assign(item, options);
+}
 
 export default class Actor extends Sprite {
   /**
@@ -26,8 +41,8 @@ export default class Actor extends Sprite {
   /**
    * @return {string}
    */
-  getName() {
-    return this.name;
+  getClassName() {
+    return this.className;
   }
 
   /**

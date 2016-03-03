@@ -9,3 +9,11 @@ export function wordwrap(str, breakAt = 17, append = '\n') {
 
   return str.trim().replace(new RegExp(regexp, 'g'), `$1${append}`);
 }
+
+/**
+ * @param {string} string
+ * @return {string}
+ */
+export function camelToKebab(string) {
+  return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}

@@ -11,8 +11,8 @@ import hasPlatforms from 'states/components/has-platforms';
 import hasItems from 'states/components/has-items';
 import canCreateFromObjects from 'states/components/can-create-from-objects';
 import canDie from 'states/components/can-die';
-import Terminal from 'entities/actors/structures/terminal';
-import Floppy from 'entities/actors/items/floppy';
+import {createItem} from 'entities/actors/items/item';
+import {createStructure} from 'entities/actors/structures/structure';
 
 export default class Stage1 extends GameState {
   static onPreload(preloader) {
@@ -37,7 +37,7 @@ export default class Stage1 extends GameState {
     this.addComponent(hasNextStage, {stageId: 'Stage1', stageClass: Stage1});
     this.addComponent(canCreateFromObjects);
 
-    this.terminal = Terminal(getTilePosition(13) + 4, getTilePosition(7) + 7, {id: 'TERMINAL_1'});
+    this.terminal = createStructure('Terminal', getTilePosition(13) + 4, getTilePosition(7) + 7, {id: 'TERMINAL_1'});
 
     this.addComponent(hasPlayer, {x: getTilePosition(10), y: getTilePosition(9)});
     this.addComponent(canDie);
@@ -45,7 +45,7 @@ export default class Stage1 extends GameState {
     this.addComponent(hasPlatforms);
     this.addComponent(hasItems);
 
-    this.floppy = Floppy(getTilePosition(8), getTilePosition(8) - 4, {id: 'FLOPPY_1'});
+    this.floppy = createItem('Floppy', getTilePosition(8), getTilePosition(8) - 4, {id: 'FLOPPY_1'});
   }
 
   update() {

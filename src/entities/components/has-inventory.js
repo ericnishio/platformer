@@ -13,7 +13,7 @@ export default parent => {
      * @return {boolean}
      */
     hasItem(item) {
-      return this.hasItemByName(item.name);
+      return this.hasItemByClassName(item.className);
     },
 
     /**
@@ -36,11 +36,11 @@ export default parent => {
      * @param {string} itemName
      * @return {boolean}
      */
-    hasItemByName(itemName) {
+    hasItemByClassName(className) {
       let hasIt = false;
 
       this.inventory.forEach((itemInInventory) => {
-        if (itemInInventory.name === itemName) {
+        if (itemInInventory.className === className) {
           hasIt = true;
         }
       });
@@ -64,7 +64,7 @@ export default parent => {
       let count = 0;
 
       this.inventory.forEach(itemInInventory => {
-        if (item.name === itemInInventory.name) {
+        if (item.className === itemInInventory.className) {
           count += 1;
         }
       });
@@ -96,7 +96,7 @@ export default parent => {
       return {
         inventory: component.inventory.map(item => ({
           id: item.id,
-          name: item.name
+          className: item.className
           // TODO: Include more props.
         }))
       };

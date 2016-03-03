@@ -1,16 +1,6 @@
 import Structure from './structure';
-import {getGame} from 'core/game';
 
-/**
- * @param {number} x
- * @param {number} y
- * @return {Crate}
- */
-export default (x, y) => {
-  return new Crate(getGame(), x, y);
-};
-
-export class Crate extends Structure {
+export default class Crate extends Structure {
   /**
    * @param {Phaser.Game} game
    * @param {number} x
@@ -19,7 +9,7 @@ export class Crate extends Structure {
   constructor(game, x, y) {
     super(game, x, y, 'terrain-1x1-1', 1);
 
-    this.name = 'Crate';
+    this.className = 'Crate';
     this.anchor.setTo(0, 0);
 
     this.body.immovable = true;
