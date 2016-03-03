@@ -1,6 +1,6 @@
 import {Keyboard, Gamepad} from 'phaser';
 
-import {saveGame} from 'services/save-game';
+import {saveGame, loadGame} from 'services/save-game';
 
 /**
  * @param {GameState} parent
@@ -62,10 +62,15 @@ export default (parent, {actor}) => {
     }
   };
 
-  // Save game
+  // Quick save
   parent.game.input.keyboard
     .addKey(Keyboard.F5)
     .onDown.add(() => saveGame(parent.game, actor), this);
+
+  // Quick load
+  parent.game.input.keyboard
+    .addKey(Keyboard.F9)
+    .onDown.add(() => loadGame(parent.game, actor), this);
 
   component.pad1 = parent.game.input.gamepad.pad1;
   parent.game.input.gamepad.start();
