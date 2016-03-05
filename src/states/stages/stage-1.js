@@ -49,9 +49,9 @@ export default class Stage1 extends GameState {
 
     this.getComponent('hasDoors').createDoor(
       getTilePosition(18),
-      getTilePosition(8),
+      getTilePosition(9),
       getTilePosition(34),
-      getTilePosition(8),
+      getTilePosition(9),
       LEFT
     );
 
