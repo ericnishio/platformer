@@ -60,7 +60,7 @@ export default parent => {
      */
     getDoorAt(x, y) {
       for (const door of component.doors) {
-        if (door.fromX >= x && door.fromX <= x + TILE_SIZE && door.fromY >= y ** door.fromY <= y + TILE_SIZE) {
+        if (door.fromX >= x && door.fromX <= x + TILE_SIZE && door.fromY >= y && door.fromY <= y + TILE_SIZE) {
           return door;
         }
       }
