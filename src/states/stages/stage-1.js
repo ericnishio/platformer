@@ -1,4 +1,4 @@
-import {Tilemap} from 'phaser';
+import {LEFT, Tilemap} from 'phaser';
 
 import {TILE_SIZE, getTilePosition} from 'core/game';
 import GameState from 'states/game-state';
@@ -11,9 +11,9 @@ import hasPlatforms from 'states/components/has-platforms';
 import hasItems from 'states/components/has-items';
 import canCreateFromObjects from 'states/components/can-create-from-objects';
 import canDie from 'states/components/can-die';
+import hasDoors from 'states/components/has-doors';
 import {createItem} from 'entities/actors/items/item';
 import {createStructure} from 'entities/actors/structures/structure';
-import {transitionFromColor} from 'ui/transitions';
 
 export default class Stage1 extends GameState {
   static onPreload(preloader) {
@@ -45,10 +45,17 @@ export default class Stage1 extends GameState {
     this.addComponent(canHandleInput, {actor: this.getComponent('hasPlayer').getPlayer()});
     this.addComponent(hasPlatforms);
     this.addComponent(hasItems);
+    this.addComponent(hasDoors);
+
+    this.getComponent('hasDoors').createDoor(
+      getTilePosition(18),
+      getTilePosition(8),
+      getTilePosition(34),
+      getTilePosition(8),
+      LEFT
+    );
 
     this.floppy = createItem('Floppy', getTilePosition(8), getTilePosition(8) - 4, {id: 'FLOPPY_1'});
-
-    transitionFromColor('#000000');
   }
 
   update() {
@@ -56,6 +63,7 @@ export default class Stage1 extends GameState {
     this.getComponent('hasItems').update();
     this.getComponent('hasPlatforms').update();
     this.getComponent('canHandleInput').update();
+    this.getComponent('hasDoors').update();
 
     const player = this.getComponent('hasPlayer').getPlayer();
 
