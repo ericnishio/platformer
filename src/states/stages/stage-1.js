@@ -13,6 +13,7 @@ import canCreateFromObjects from 'states/components/can-create-from-objects';
 import canDie from 'states/components/can-die';
 import {createItem} from 'entities/actors/items/item';
 import {createStructure} from 'entities/actors/structures/structure';
+import {transitionFromColor} from 'ui/transitions';
 
 export default class Stage1 extends GameState {
   static onPreload(preloader) {
@@ -46,6 +47,8 @@ export default class Stage1 extends GameState {
     this.addComponent(hasItems);
 
     this.floppy = createItem('Floppy', getTilePosition(8), getTilePosition(8) - 4, {id: 'FLOPPY_1'});
+
+    transitionFromColor('#000000');
   }
 
   update() {
