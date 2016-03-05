@@ -6,6 +6,10 @@ import {transitionFromColor, transitionToColor} from 'ui/transitions';
 const FADE_DURATION = 400;
 const FADE_COLOR = '#000000';
 
+/**
+ * @param {GameState} parent
+ * @return {Object}
+ */
 export default parent => {
   const component = {
     isEnteringDoor: false,
