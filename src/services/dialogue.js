@@ -36,6 +36,12 @@ export function incrementDialogue(actorId) {
 function getNextMessages(actorId, dialogueIndex, dialogues, stage) {
   const response = get(dialogues, dialogueIndex);
 
+  if (!response && dialogueIndex > 0) {
+    const previousResponse = get(dialogues, dialogueIndex - 1);
+
+    return previousResponse.messagesOnSuccess;
+  }
+
   if (!response) {
     return [];
   }
