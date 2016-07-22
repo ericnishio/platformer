@@ -55,7 +55,15 @@ export default class Stage1 extends GameState {
       LEFT
     );
 
-    this.floppy = createItem('Floppy', getTilePosition(8), getTilePosition(8) - 4, {id: 'FLOPPY_1'});
+    this.getComponent('hasDoors').createDoor(
+      getTilePosition(43),
+      getTilePosition(9),
+      getTilePosition(9),
+      getTilePosition(24),
+      LEFT
+    );
+
+    this.floppy = createItem('Floppy', getTilePosition(39), getTilePosition(9) - 4, {id: 'FLOPPY_1'});
   }
 
   update() {

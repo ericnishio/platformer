@@ -4,7 +4,7 @@
       "Good morning, Doctor. Doesn't earth look dashing today?",
       "Why don't you go out for a walk and get some fresh air?",
       "Haha!",
-      "By the way, I need you to upload your daily log.",
+      "By the way, I need you to upload your daily log before I can let you out.",
       "Find your personal floppy and insert it into this terminal."
     ]
   },
@@ -17,11 +17,18 @@
         }
       }
     ],
-    "messagesOnSuccess": [
-      "OK. Let's see..."
-    ],
     "messagesOnRejection": [
-      "Your floppy should be somewhere in your quarters."
+      "I don't know where it is! Should look around..."
+    ],
+    "messagesOnSuccess": [
+      "*Munch munch*",
+      "Ah, you're back. Let's see...",
+      "You...",
+      "You found it.",
+      "Ha! This entry is from last night.",
+      "You left your toolbox in the hangar?",
+      "Well, I guess I'll have to open the hatch for you.",
+      "Off you go."
     ]
   }
 ]

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="16" tileheight="16">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="interior-1x1-1" tilewidth="16" tileheight="16">
   <image source="../spritesheets/interior-1x1-1.png" width="128" height="128"/>
  </tileset>
- <layer name="Sky" width="50" height="30" opacity="0.12">
+ <layer name="Sky" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0ksKgCAARVFbhkXRZwFRVPTZ/756A50FSeLAuAcuiRDxIGMAIG+Fsu4Z2heh37ARO3ylalSruof7yXzbsajVvbur4+Ucu6NSterVoEaXv58jdmzu3UudL+fYHSn/q9T+sgMAAAAAgBzc6lIGOQ==
+   eJzt1lkKgCAUhWHbRQNFwwKiqGja/7o6gr5FxDXB5HzwkwgRF3q4ShER/VuCMvN8m8Tbb2QOc9hyVKEaNTf3g5LNMaHZvLui7eE8fDBHgUrUog71Jns/OsyxmHcPtD+cxw/m8Plf+RbLHERERBSHU8n2Ex9J93bN7tQhJN3bNb1Tp4Ek3duJiEJzAd0XCzE=
   </data>
  </layer>
  <layer name="Platforms" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJztzzEKgDAMRuGiXVwsOngCPYGC97+ZGVIQpyRTqe+DBx1afpoSgL/aArW4MTvvr51sXIEN75voP3bpMN5v9R9Fmoyd0hLcuPWtpRLYGKRRynq25JV1o+7Ure/u+x4AAAAAAD16AIBvBcg=
+   eJztlkEKgDAMBEWr4MWqB1+gL1Dw/z8zhRaKF5OgQXQHBjxUhty2KAAAf2VS+MZGJ3w/fqSxKRrSfzSNcMdMLg82LO7wZMt0JQdlY4//cvSKRklWpIvfHKW42Eid1Dp383cAAAAA4KPZ1BZKke5dCyy2qAV/viPs5P5F1mSjuONqo+d7m7vr7xAAIOcAZrUM/g==
   </data>
  </layer>
 </map>
