@@ -41,8 +41,7 @@ export default class Stage1 extends GameState {
 
     this.terminal = createStructure('Terminal', getTilePosition(13) + 4, getTilePosition(7) + 7, {id: 'TERMINAL_1'});
 
-    this.addComponent(hasPlayer, {x: getTilePosition(21), y: getTilePosition(34)});
-    // this.addComponent(hasPlayer, {x: getTilePosition(10), y: getTilePosition(9)});
+    this.addComponent(hasPlayer, {x: getTilePosition(10), y: getTilePosition(9)});
     this.addComponent(canDie);
     this.addComponent(canHandleInput, {actor: this.getComponent('hasPlayer').getPlayer()});
     this.addComponent(hasPlatforms);
