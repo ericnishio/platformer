@@ -20,7 +20,6 @@ export default class Stage1 extends GameState {
     preloader.load.tilemap('Stage1', require('file!assets/tilemaps/stage-1.json'), null, Tilemap.TILED_JSON);
 
     preloader.load.spritesheet('interior-1x1-1', require('assets/spritesheets/interior-1x1-1.png'), TILE_SIZE, TILE_SIZE);
-    preloader.load.spritesheet('terrain-1x1-1', require('assets/spritesheets/terrain-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('creatures-1x2-1', require('assets/spritesheets/creatures-1x2-1.png'), TILE_SIZE, TILE_SIZE * 2);
     preloader.load.spritesheet('weapons-1x1-1', require('assets/spritesheets/weapons-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('oxygen-meter', require('assets/spritesheets/oxygen-meter.png'), TILE_SIZE * 7, TILE_SIZE);
@@ -34,7 +33,7 @@ export default class Stage1 extends GameState {
   }
 
   create() {
-    this.addComponent(hasTilemap, {tilemap: 'Stage1', tilesets: ['interior-1x1-1', 'terrain-1x1-1']});
+    this.addComponent(hasTilemap, {tilemap: 'Stage1', tilesets: ['interior-1x1-1']});
     this.addComponent(hasSky);
     this.addComponent(hasNextStage, {stageId: 'Stage1', stageClass: Stage1});
     this.addComponent(canCreateFromObjects);
