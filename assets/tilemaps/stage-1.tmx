@@ -5,12 +5,12 @@
  </tileset>
  <layer name="Sky" width="50" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt2FsKwjAUhOG4C6soXhYgLVW87X9dTiABH7TUk0Zj+D8YGgKlDJTmUOcA4L/NlCZcx8Zi7DOahB4xC2WtbJTti/3W2Xr0yjHce1YuA+t2gh5LZaXslL1yCIn7XUKPU7j3plwH1t0EPXK+V7nV0gMAANTh7mzzSY5Y53YvztQlxDq3e36mnhcS69z+iVrmXnqUhR5lqaHHuzPr+ZuZcoZ9Sy3/IOgBAAAAAAAAAL/xAKEEC+Y=
+   eJzt2AsKgkAUheHbLrIorBYQSkUPqf3vqhvMwAgiw6jMdPk/OPhi0AOCF0UA4L+tNJXbxiZF7D2qCT18Npq9ptYcBs43ktbjorm6tXfNY2S/maHHVrPTHDUnzdnFn28n9Li5tS/Nc2S/naHHku/V0qz0AAAANnSSNp8Mzdw55xY/U8eklv5MH+YteXv8Zup1ZPxMP3Tt47alszL30qMs9CiLhR4x35Yu29PFs/IPwmqP8DseHgMAAAAAAABAKb4U3Qrt
   </data>
  </layer>
  <layer name="Platforms" width="50" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt2H0KgkAQh2EpCyLJCqwL1AkK+qv7X6tdWEGWLWcG3Px4H/iBiMvsJOFoUQBYqoshY6xxUF5/nkmNp6GGdo2lhu/j5nIfsEaOPmqXnTAPl5OxxiuslaQ21Fi5rF3KcCyJVhlqtHXaWnHd7nUAAEDOMlPniJZ23s0hxyyaw5L78HPyUZiYdJ0mG5etoY++Gb2do+P3jiack8762gwl9f5keaf6N7/nJnFuauZ0P7r8valc9lGqzPvSkv72lm8EOaX+HylT6ONa9PcylT5Svbw7x2Pvw+8v/lb2LWMWP99/Pf8BAAAAAACApfoAoicP0Q==
+   eJzt2P0KgjAUh2EpCyLJCqwbqCso6K/u/7baYAM5rNymrqnvAz8IPzg7aniwKAAs1SUiOdY4BB5/nkmNZ0SN0HNiaug+bir3EWuk6KNW2XnmoXKKrPEy5/qkjqixUlmrlOa3T0KVpoatY2vJuu3jAACAv5iZeuiZewih826XmBkvx7r00Y+ek4+ekeT+jcp2/CU7dc3odo6W17kx24aY61NyPS//eob60GtuHNumZk73o03fm0plL1IlXlco32sf840gJdf/w2UKfVyL7l6m0ofs5W1i5d6HXp/8VvYtOZPv91/vfwAAAAAAAGCpPp8IDy0=
   </data>
  </layer>
 </map>

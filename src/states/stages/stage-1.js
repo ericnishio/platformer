@@ -63,7 +63,7 @@ export default class Stage1 extends GameState {
       LEFT
     );
 
-    this.wrench = createItem('Wrench', getTilePosition(23), getTilePosition(33) - 4, {id: 'WRENCH_1'});
+    this.wrench = createItem('Wrench', getTilePosition(22.5), getTilePosition(33) - 4, {id: 'WRENCH_1'});
   }
 
   update() {
