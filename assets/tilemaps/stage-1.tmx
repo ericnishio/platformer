@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="60" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="interior-1x1-1" tilewidth="16" tileheight="16">
   <image source="../spritesheets/interior-1x1-1.png" width="128" height="128"/>
  </tileset>
- <layer name="Sky" width="50" height="30">
+ <tileset firstgid="65" name="terrain-1x1-1" tilewidth="16" tileheight="16">
+  <image source="../spritesheets/terrain-1x1-1.png" width="128" height="96"/>
+ </tileset>
+ <layer name="Sky" width="50" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt1lkKgCAUhWHbRQNFwwKiqGja/7o6gr5FxDXB5HzwkwgRF3q4ShER/VuCMvN8m8Tbb2QOc9hyVKEaNTf3g5LNMaHZvLui7eE8fDBHgUrUog71Jns/OsyxmHcPtD+cxw/m8Plf+RbLHERERBSHU8n2Ex9J93bN7tQhJN3bNb1Tp4Ek3duJiEJzAd0XCzE=
+   eJzt2FsKwjAUhOG4C6soXhYgLVW87X9dTiABH7TUk0Zj+D8YGgKlDJTmUOcA4L/NlCZcx8Zi7DOahB4xC2WtbJTti/3W2Xr0yjHce1YuA+t2gh5LZaXslL1yCIn7XUKPU7j3plwH1t0EPXK+V7nV0gMAANTh7mzzSY5Y53YvztQlxDq3e36mnhcS69z+iVrmXnqUhR5lqaHHuzPr+ZuZcoZ9Sy3/IOgBAAAAAAAAAL/xAKEEC+Y=
   </data>
  </layer>
- <layer name="Platforms" width="50" height="30">
+ <layer name="Platforms" width="50" height="60">
   <data encoding="base64" compression="zlib">
-   eJztlkEKgDAMBEWr4MWqB1+gL1Dw/z8zhRaKF5OgQXQHBjxUhty2KAAAf2VS+MZGJ3w/fqSxKRrSfzSNcMdMLg82LO7wZMt0JQdlY4//cvSKRklWpIvfHKW42Eid1Dp383cAAAAA4KPZ1BZKke5dCyy2qAV/viPs5P5F1mSjuONqo+d7m7vr7xAAIOcAZrUM/g==
+   eJzt2H0KgkAQh2EpCyLJCqwL1AkK+r/7H6pdWEGWLWcG3Px4H/iBiMvsJOFoUQBYqoshY6xxUF5/nkmNp6GGdo2lhu/j5nIfsEaOPmqXnTAPl5OxxiuslaQ21Fi5rF3KcCyJVhlqtHXaWnHd7nUAAEDOMlPniJZ23s0hxyyaw5L78HPyUZiYdJ0mG5etoY++Gb2do+P3jiack8762gwl9f5keaf6N7/nJnFuauZ0P7r8valc9lGqzPvSkv72lm8EOaX+HylT6ONa9PcylT5Svbw7x2Pvw+8v/lb2LWMWP99/Pf8BAAAAAACApfoACeIP1g==
   </data>
  </layer>
 </map>

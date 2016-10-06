@@ -20,6 +20,7 @@ export default class Stage1 extends GameState {
     preloader.load.tilemap('Stage1', require('file!assets/tilemaps/stage-1.json'), null, Tilemap.TILED_JSON);
 
     preloader.load.spritesheet('interior-1x1-1', require('assets/spritesheets/interior-1x1-1.png'), TILE_SIZE, TILE_SIZE);
+    preloader.load.spritesheet('terrain-1x1-1', require('assets/spritesheets/terrain-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('creatures-1x2-1', require('assets/spritesheets/creatures-1x2-1.png'), TILE_SIZE, TILE_SIZE * 2);
     preloader.load.spritesheet('weapons-1x1-1', require('assets/spritesheets/weapons-1x1-1.png'), TILE_SIZE, TILE_SIZE);
     preloader.load.spritesheet('oxygen-meter', require('assets/spritesheets/oxygen-meter.png'), TILE_SIZE * 7, TILE_SIZE);
@@ -33,14 +34,15 @@ export default class Stage1 extends GameState {
   }
 
   create() {
-    this.addComponent(hasTilemap, {tilemap: 'Stage1', tilesets: ['interior-1x1-1']});
+    this.addComponent(hasTilemap, {tilemap: 'Stage1', tilesets: ['interior-1x1-1', 'terrain-1x1-1']});
     this.addComponent(hasSky);
     this.addComponent(hasNextStage, {stageId: 'Stage1', stageClass: Stage1});
     this.addComponent(canCreateFromObjects);
 
     this.terminal = createStructure('Terminal', getTilePosition(13) + 4, getTilePosition(7) + 7, {id: 'TERMINAL_1'});
 
-    this.addComponent(hasPlayer, {x: getTilePosition(10), y: getTilePosition(9)});
+    this.addComponent(hasPlayer, {x: getTilePosition(21), y: getTilePosition(34)});
+    // this.addComponent(hasPlayer, {x: getTilePosition(10), y: getTilePosition(9)});
     this.addComponent(canDie);
     this.addComponent(canHandleInput, {actor: this.getComponent('hasPlayer').getPlayer()});
     this.addComponent(hasPlatforms);
@@ -63,7 +65,7 @@ export default class Stage1 extends GameState {
       LEFT
     );
 
-    this.floppy = createItem('Floppy', getTilePosition(39), getTilePosition(9) - 4, {id: 'FLOPPY_1'});
+    this.wrench = createItem('Wrench', getTilePosition(23), getTilePosition(33) - 4, {id: 'WRENCH_1'});
   }
 
   update() {
@@ -75,8 +77,8 @@ export default class Stage1 extends GameState {
 
     const player = this.getComponent('hasPlayer').getPlayer();
 
-    this.game.physics.arcade.collide(this.floppy, this.getComponent('hasPlatforms').platforms);
-    this.game.physics.arcade.collide(this.floppy, player, () => this.floppy.handleCollision(player));
+    this.game.physics.arcade.collide(this.wrench, this.getComponent('hasPlatforms').platforms);
+    this.game.physics.arcade.collide(this.wrench, player, () => this.wrench.handleCollision(player));
 
     this.game.physics.arcade.overlap(player, this.terminal, () => {
       player.getComponent('canInteract').suggestInteraction(() => {

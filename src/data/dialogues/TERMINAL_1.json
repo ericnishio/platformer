@@ -1,11 +1,20 @@
 [
   {
     "messagesOnSuccess": [
-      "Good morning, Doctor. Doesn't earth look dashing today?",
+      "boot -d EDENOS",
+      "fs.read '/dev/disk0'",
+      "Good morning, Handyman. Doesn't earth look dashing today?",
       "Why don't you go out for a walk and get some fresh air?",
       "Haha!",
-      "By the way, I need you to upload your daily log before I can let you out.",
-      "Find your personal floppy and insert it into this terminal."
+      "All right, all right.",
+      "Your backlog contains 1 new mission.",
+      "As you might've heard, we caught a large asteroid last night.",
+      "Normally we'd be celebrating, but...",
+      "Its massive size caused quite a bit of a mess.",
+      "It damaged a lot of our equipment nearby.",
+      "So we'll need you to go to an adjacent mining site and bring it back online.",
+      "Now get to your rover.",
+      "EOF"
     ]
   },
   {
@@ -13,22 +22,18 @@
       {
         "type": "PLAYER_HAS_ITEM",
         "params": {
-          "itemId": "FLOPPY_1"
+          "itemId": "WRENCH_1"
         }
       }
     ],
     "messagesOnRejection": [
-      "I don't know where it is! Should look around..."
+      "Ah, the airlock is jammed. I suppose you'll need a wrench.",
+      "Should look around..."
     ],
     "messagesOnSuccess": [
       "*Munch munch*",
-      "Ah, you're back. Let's see...",
-      "You...",
-      "You found it.",
-      "Ha! This entry is from last night.",
-      "You left your toolbox in the hangar?",
-      "Well, I guess I'll have to open the hatch for you.",
-      "Off you go."
+      "Ah, you're back.",
+      "Well, off you go then."
     ]
   }
 ]
